@@ -10,21 +10,22 @@ give you a feel for the class.
 
 Sage is a very powerful healer with a smooth flow and straightforward skills. Sage brings high personal damage, tons of
 free healing, and low cooldown mitigation to the party. Kardia is a unique buff, with no duration, that will heal its
-target for free when you use an offensive GCD. Addersgall is your main gauge resource, with a free charge every 30
+target for free when you use an offensive GCD. Addersgall is your main gauge resource, with a free charge every 20
 seconds, allowing powerful oGCD heals to be used. It's also the only healer with a gapcloser.
 
 ### What Makes Sage Unique?
 
+[//]: # (TODO: see what can be done to reword this, )
 If you haven't played another healer before, Sage isn't a bad choice. It's pretty straightforward to play at a decent
 level, and isn't all that hard optimize if you want to take your gameplay further.
 
 Sage has the highest personal DPS of all the healers, but does not have a raid buff. It has a very high amount of free
-healing ("free healing" refers to any healing that does not require a tradeoff in the form of damage output). While it
-does have GCD heals as a last resort, they are a bit weaker than other healers. Thus, while Sage is one of the best
-healers at keeping the party alive and topped up, it is one of the worst at recovering when things go downhill. Thus,
-you need to be proactive. However, its relatively low cooldowns make that a little easier than you'd think. It also can
-move around quite a bit without much, if any, damage loss, but doing so requires planning ahead a bit. The gapcloser is
-the cherry on top that cements it as a very unique healer.
+healing, which is any healing that does not require a tradeoff in the form of damage output. While it does have GCD
+heals as a last resort, they are a bit weaker than other healers. Thus, while Sage is one of the best healers at keeping
+the party alive and topped up, it is one of the worst at recovering when things go downhill, requiring the player to be
+proactive rather than reactive. However, its relatively low cooldowns make that a little easier than you'd think. While
+all healers require some degree of planning for their movement, Sage has a multitude of tools to make it a little
+easier, including being the only healer with a gapcloser.
 
 #### Comparison to Other Healers
 
@@ -32,9 +33,10 @@ If you have played any of the other healers, this may give you a better idea of 
 
 Compared to White Mage: Both White Mage and Sage are the "greedy" healers in that they have high personal damage output,
 but lack in raid buffs. However, Sage has significantly higher amounts of free healing, as Lily heals are still a DPS
-loss. However, White Mage has somewhat better options for recovering out of a bad situation. Similar to White Mage, Sage
-is more "Freeform" rather than having more of a fixed rotation, as neither of them has a raid buff to plan out and keep
-track of.
+loss. However, White Mage has somewhat better options for recovering out of a bad situation. While they both ideally
+want to use their burst during raid buffs, SGE and WHM have a bit more leeway, as the other healers have raid buffs that
+they need to keep on cooldown. If those healers forget to use such an ability, even just for a couple GCDs, it can
+become out of sync with their other abilities or party buffs.
 
 Compared to Scholar: Their abilities have some parallels (for example, Kerachole is similar to Soil), and both are
 technically considered "Shield Healers" (or "Barrier Healers"). However, Scholar has less free healing, as its
@@ -42,14 +44,15 @@ Aetherflow heals cost a small amount of damage. However, as mentioned in the Whi
 , as it does not have a raid buff that needs to be planned out.
 
 Compared to Astrologian: Astrologian is the polar opposite in terms of damage - AST contributes the lowest personal DPS,
-but has the strongest buffs. However, Sage is similar to Astrologian in terms of not giving up damage to use its heals.
+but has the strongest buffs. However, Sage is similar to Astrologian in terms of not giving up damage to use its heals -
+they have the highest amount of free heals available.
 
 ### Playstyle
 
-As with the three other healers, Sage has a 30 second dot with a 1.5 cast time filler GCD. However, it is unique in that
-it has the only healer burst GCD with a charge time. By using charges rather than a hard cooldown on its primary burst,
-you don't have to worry quite as much about alignment, making it somewhat more ideal than other healers if you aren't
-going to be able to gear up as quickly.
+As with the three other healers, Sage has a 30 second dot with a 1.5 cast time filler GCD. However, having a burst GCD
+on a charge system is what distinguishes it from other healers. By using charges rather than a hard cooldown on its
+primary burst, you don't have to worry quite as much about hitting specific amounts of spell speed, making it somewhat
+more ideal than other healers if you aren't going to be able to gear up as quickly.
 
 ![Sage Job Gauge](https://img.finalfantasyxiv.com/lds/promo/h/7/Dj5guxNBiGuHgfgp0kX69Oxkng.png)
 
@@ -62,7 +65,7 @@ Apart from resources shared by all healers, such as mana, Sage has three main re
    consumed.
 
 The bar on the gauge shows the charge time for Addersgall. Current Addersgall charges are displayed at the top of the
-gauge, and Adderstring stacks are displayed at the bottom.
+gauge, and Addersting stacks are displayed at the bottom.
 
 As mentioned, Sage has the widest range of heals that do not sacrifice any damage, nor does it have any cooldowns longer
 than three minutes. As such, it feels very straightforward to play, as optimizing damage output need not involve
@@ -89,10 +92,10 @@ However, you have three additional GCDs that are useful against single targets (
 too):
 
 - Phlegma
-- Toxicon
+- Toxikon
 - Pneuma
 
-Phlemga is a damage gain, while Toxicon and Pneuma are damage neutral. Let's talk about the best times to use each one.
+Phlemga is a damage gain, while Toxikon and Pneuma are damage neutral. Let's talk about the best times to use each one.
 
 #### Phlegma
 
@@ -103,19 +106,20 @@ movement. Alternatively, if you have a Ninja, you can also use extra charges und
 bosses going untargetable, and dump charges before the boss goes away if needed if you might otherwise overcap (for
 example, before going into adds phase in P3S).
 
-#### Toxicon
+#### Toxikon
 
-Toxicon's advantage is that it is the same potency as Dosis, but is instant cast, thus allowing free movement while
-using it. Toxicon requires Addersting charges to use. These can only be attained by having your shield from Eukrasian
-Diagnosis be fully consumed. However, using Eukrasian Diagnosis and Toxicon is still a damage loss compared to using two
-Doses. Therefore, the ideal way to use it to apply the shields pre-pull (either on just the main tank, or on the main
+Toxikon's advantage is that it is the same potency as Dosis, but is instant cast, thus allowing free movement while
+using it. Toxikon requires Addersting charges to use. These can only be attained by having your shield from Eukrasian
+Diagnosis be fully consumed. However, using Eukrasian Diagnosis and Toxikon is still a damage loss compared to using two
+Doses. Therefore, the ideal way to use it is to apply the shields pre-pull (either on just the main tank, or on the main
 tank and two others for fights with a raidwide in the first 25 seconds or so). This will give you 1 to 3 charges to use.
 You can repeat this process during any downtime that may exist in the fight, giving you a few more charges to use.
 
 #### Pneuma
 
 Pneuma is also the same potency as Dosis, but it comes with a fairly powerful AoE heal attached. Its 600 potency heal
-can be boosted to 900p using Zoe, making it one of the strongest raw heals.
+can be boosted to 900p using Zoe, making it one of the strongest raw heals. However, being exactly the same potency as
+Dosis, it should not be used on a single target if the healing is not needed.
 
 ### Healing
 
@@ -123,7 +127,7 @@ can be boosted to 900p using Zoe, making it one of the strongest raw heals.
 
 First, let's talk about Kardia. Kardia is an indefinite buff, similar to Dance Partner. You can put it on a party
 member, and it will remain on them for the duration of the raid (persisting even through wipes). It simply causes any of
-your offensive GCDs to apply a 170 potency heal to the target (with a generous range limit of 30 yalms).
+your offensive GCDs to apply a 170 potency heal to the target.
 
 Kardia is completely free. It should always be on someone. The main tank is usually not a bad choice. However, it can
 also help for some unplanned healing situations, like if someone fails a mechanic and takes unnecessary damage. Kardia
@@ -138,10 +142,10 @@ necessarily needed.
 - Kerachole: It provides a 10% mitigation and 100p regen for 15 seconds to nearby party members. Functionally very
   similar to Scholar's Sacred Soil, but does not need to be placed (for better or for worse). Its 30 second cooldown
   means it can be up half the time, and the 500p total healing is more than Ixochole. Generally, this should be your
-  go-to ability for incoming AoE damage. Does not stack with Taurochole.
+  go-to ability for incoming AoE damage. The damage reduction does not stack with Taurochole.
 - Ixochole: A simple 400p AoE heal on a 30 second cooldown.
-- Taurochole: A single target, 700 potency heal, plus 10% damage mitigation for 15 seconds. 45 second cooldown. Does not
-  stack with Kerachole.
+- Taurochole: A single target, 700 potency heal, plus 10% damage mitigation for 15 seconds. 45 second cooldown. The
+  damage reduction does not stack with Kerachole.
 - Druochole: A single target, 600p heal. This does not have a cooldown.
 
 Generally, Addersgall heals should be your first and foremost healing tool, as using them restores mana.
@@ -153,9 +157,11 @@ priority for healing, behind Addersgall heals.
 
 - Kardia: See the [Kardia](#Kardia) section above.
 - Physis: AoE regen plus heal boost on a 60 second cooldown. The regen is 650 potency total over 15 seconds (5 ticks of
-  130p each). The healing up effect only last 10 seconds, but affects all healing, even your co-healer.
+  130p each). The healing up effect only last 10 seconds, and affects all incoming healing on affected targets.
 - Haima: A shield that repeatedly re-applies itself when absorbed (up to 5 times, not including the initial shield).
-  Each shield is 300 potency, so the best case scenario is 1800p total absorbed.
+  Each shield is 300 potency, so the best case scenario is 1800p total absorbed. It also applies a small heal at the end
+  of the duration based on how many stacks are remaining, so it can still be useful even if only two or three stacks are
+  consumed.
 - Panhaima: Like Haima, but AoE, with a lower potency to compensate.
 - Holos: Similar effect to Taurochole, but AoE. However, it does stack with Kerachole or Taurochole. The 300p heal is
   minor, but still something, so ideally you want to make use of both the healing and damage reduction.
@@ -169,20 +175,24 @@ not particularly effective. You have Diagnosis as a single target, with Eukrasia
 heal, with Eukrasia also adding a shield. Generally, the Eukrasian versions are preferred, but both versions should be
 avoided if possible.
 
+However, they are free to use during downtime, mana aside. This can help with Toxikon stacks as well as free shields.
+
 #### Utility
 
 - Icarus: Your gapcloser. You're the only healer with a gapcloser, so make good use of it. It can be used on an enemy or
   party member.
-- Soteria: Temporarily boosts the healing from Kardia. Useful for when you need a little extra free single target
+- Soteria: Temporarily boosts the healing from Kardia by 50%. Useful for when you need a little extra free single target
   healing, or general tank upkeep.
 - Zoe: Increases the potency of the next GCD heal by 50%. The important part is the Pneuma counts as a GCD heal for this
-  purpose, so you can make use of this without using a pure GCD heal.
+  purpose, so you can make full use of Zoe while not sacrificing damage.
 - Pepsis: Converts shields from your GCD heals that are currently applied to raw healing. Like Scholar's Emergency
-  Tactics, but in reverse (you use the heal first, then use Pepsis).
+  Tactics, but in reverse (you use the heal first, then use Pepsis). This skill is fairly uncommon in actual use, so
+  don't feel like it's going to waste if you don't use it.
 - Rhizomata: Gives you a charge of Addersgall. Since Addersgall heals give mana, this can help with MP management even
   if the healing is not needed.
 - Krasis: Increases healing received by a target. You should cast this on the target that you want to heal, not
-  yourself.
+  yourself. It will increase all forms of healing received by the target, and works multiplicative with other boosters
+  such as Soteria.
 
 ### Leveling/Dungeon Gameplay
 
@@ -193,7 +203,7 @@ Dungeons are pretty straightforward, since Kardia makes dungeons a breeze.
 - DoT packs as you walk up to them
 - Use oGCD heals before dipping into GCD heals while fighting - you can use your 60 second cooldowns every big pull, and
   120 second cooldowns every other big pull
-- Charge up Toxicon by applying Eukrasian Diagnosis to the tank before reaching a pack
+- Charge up Toxikon by applying Eukrasian Diagnosis to the tank before reaching a pack
 
 ### Gearing/Materia
 

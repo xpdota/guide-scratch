@@ -155,4 +155,4 @@ avoided if possible.
 - Krasis: Increases healing received by a target. You should cast this on the target that you want to heal, not
   yourself.
 
-[//]: # (TODO: haima duration notes, kera does not give free tick)
+[//]: # (TODO: Kardia range)
