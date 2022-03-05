@@ -183,8 +183,8 @@ However, they are free to use during downtime, mana aside. This can help with To
   party member.
 - Soteria: Temporarily boosts the healing from Kardia by 50%. Useful for when you need a little extra free single target
   healing, or general tank upkeep.
-- Zoe: Increases the potency of the next GCD heal by 50%. The important part is the Pneuma counts as a GCD heal for this
-  purpose, so you can make full use of Zoe while not sacrificing damage.
+- Zoe: Increases the potency of the next GCD heal by 50%. The important part is the Pneuma counts as a GCD heal, so you
+  can make full use of Zoe while not sacrificing damage.
 - Pepsis: Converts shields from your GCD heals that are currently applied to raw healing. Like Scholar's Emergency
   Tactics, but in reverse (you use the heal first, then use Pepsis). This skill is fairly uncommon in actual use, so
   don't feel like it's going to waste if you don't use it.
