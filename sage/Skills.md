@@ -74,3 +74,5 @@ easy to waste the heal by healing too early.
 Toxicon is an instant cast GCD that is damage-neutral with Dosis on a single target, and 
 Toxicon is similar to Dyskrasia, but uses "Adderstring" charges and has slightly different scaling. It is damage-neutral
 with Dosis on a single target, and beats Dyskrasia for AoE in all practical scenarios. 
+
+[//]: # (TODO: haima duration notes, kera does not give free tick)
