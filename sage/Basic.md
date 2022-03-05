@@ -15,9 +15,10 @@ seconds, allowing powerful oGCD heals to be used. It's also the only healer with
 
 ### What Makes Sage Unique?
 
-[//]: # (TODO: see what can be done to reword this, )
-If you haven't played another healer before, Sage isn't a bad choice. It's pretty straightforward to play at a decent
-level, and isn't all that hard optimize if you want to take your gameplay further.
+It's pretty straightforward to play at a decent level, and isn't all that hard optimize if you want to take your
+gameplay further. However, it does suffer from having the weakest GCD heals - if you are trying to recover from
+mistakes, it is a challenge to get the raid back on track. If you are completely new to healing, you may want to learn
+the basics on White Mage, which does not have this particular disadvantage.
 
 Sage has the highest personal DPS of all the healers, but does not have a raid buff. It has a very high amount of free
 healing, which is any healing that does not require a tradeoff in the form of damage output. While it does have GCD
