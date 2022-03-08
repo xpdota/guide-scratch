@@ -80,8 +80,8 @@ easy to waste the heal by healing too early.
 ### Toxikon
 
 Toxikon is an instant cast GCD that is damage-neutral with Dosis on a single target, and Toxikon is similar to
-Dyskrasia, but uses "Addersting" charges and has slightly different scaling. It is damage-neutral with Dosis on a
-single target, and beats Dyskrasia for AoE in all practical scenarios.
+Dyskrasia, but uses "Addersting" charges and has slightly different scaling. It is damage-neutral with Dosis on a single
+target, and beats Dyskrasia for AoE in all practical scenarios.
 
 [//]: # (Everything below here is copied from the basic guide, need to touch up)
 
@@ -102,6 +102,7 @@ AoE mitigation plus regen
 
 - AoE 10% mitigation and 100p regen for 15 seconds (500p over 5 ticks).
 - 30 second cooldown
+- Mitigation does not stack with Taurochole
 
 Functionally very similar to Scholar's Sacred Soil, but does not need to be placed (for better or for worse). Its 30
 second cooldown means it can be up half the time, and the 500p total healing is more than Ixochole. Generally, this
@@ -125,8 +126,12 @@ AoE heal
 - 400p AoE heal
 - 30 second cooldown
 
-As it is less healing than the regen on Kerachole, and does not offer any mitigation, it is usually preferable to use
-over Ixochole if available, and not needed for anything else in the next 30 seconds.
+As Ixochole offers less healing than the regen on Kerachole, and does not offer any mitigation, Kerachole is usually
+preferable. However, Ixochole still has many uses, such as:
+
+- You will need Kera's mitigation for something else in the next 30 seconds
+- You plan to use both Ixochole and Kerachole
+- The 15 second regen would not deliver the healing fast enough
 
 ### Taurochole
 
@@ -134,11 +139,11 @@ Single target heal plus mitigation
 
 - 700p single target heal, plus 10% mitigation for 15 seconds
 - 45 second cooldown
-- Mitigation does not stack with Kerachol
+- Mitigation does not stack with Kerachole
 
 The healing is upfront rather than over time, thus it should ideally be used when both the mitigation and healing will
 come into play. For example, if faced with a raidwide into a tankbuster, the upfront healing will heal off the raidwide,
-while the, mitigation will work nicely for the tankbuster.
+while the mitigation will work nicely for the tankbuster.
 
 ### Druochole
 
@@ -147,7 +152,7 @@ Single target heal
 - Heals target for 600p
 - No cooldown
 
-It is less potency thatn Taurochole, but has the advantage of no cooldown.
+It is less potency that Taurochole, but has the advantage of no cooldown.
 
 ## Other oGCD heals
 
@@ -203,12 +208,15 @@ Haima (and Panhamia, hereafter just Haima) has several intricacies that are wort
 
 Haima has two separate buffs that it applies. One of them has a stack number, the other does not. The one without the
 stack number is the shield itself. The one with the number indicates how many more times the shield will automatically
-re-apply. The initial application does not consume a stack, so 6 shields total can be applied. This debuff is what
-applies the healing effect when it expires.
+re-apply. The initial application does not consume a stack, so 6 shields total can be applied. This buff is what applies
+the healing effect when it expires.
 
 The duration of each buff is 15 seconds. The 15 seconds for the shield buff is reapplied every time the shield is
 consumed, thus while you will not get any more refreshes past the 15 seconds, the final shield buff linger for up to 15
 seconds longer.
+
+Both Haima and Panhaima snapshot their potency on the initial cast, so it can be used with Krasis or Physis even if it
+would not last the entire duration. This includes the heal when the buff expires.
 
 ### Holos
 
@@ -317,7 +325,7 @@ need to use Pepsis between the damage snapshotting and resolving.
 
 ### Egeiro
 
-"Raise" equivalent. 
+"Raise" equivalent.
 
 - Resurrects target to a weakened state
 - No cooldown
@@ -326,29 +334,30 @@ need to use Pepsis between the damage snapshotting and resolving.
 
 ### Lucid Dreaming
 
-![LucidDreaming](https://xivapi.com/i/000000/000865_hr1.png)  \
+![LucidDreaming](https://xivapi.com/i/000000/000865_hr1.png)
 
-* Recovers MP over time (3850 MP over 21s)
-* Use when below 8000 MP
+- Recovers MP over time (3850 MP over 21s)
+- Use when below 8000 MP
 
 ### Swiftcast
-![Swiftcast](https://xivapi.com/i/000000/000866_hr1.png)  \
 
-* Makes your next GCD spell instant cast
-* The buff is not consumed when using instant cast GCDs.
-* If desired, save Swiftcast for Resurrection
-* Otherwise, use it in the opener and for movement.
+![Swiftcast](https://xivapi.com/i/000000/000866_hr1.png)
+
+- Makes your next GCD spell instant cast
+- The buff is not consumed when using instant cast GCDs.
+- If progging or in an inconsistent party, save Swiftcast for Egeiro (Raise)
+- Otherwise, use it in the opener and for movement.
 
 ### Surecast
-![Surecast](https://xivapi.com/i/000000/000869_hr1.png)  \
 
-* Prevents most knockback and movement effects and prevents casts from being canceled
-* Use to avoid knockbacks.
+![Surecast](https://xivapi.com/i/000000/000869_hr1.png)
+
+- Prevents most knockback and movement effects and prevents casts from being canceled.
+- Use to avoid knockbacks.
 
 ### Rescue
-![Rescue](https://xivapi.com/i/000000/000890_hr1.png)  \
 
-* Pulls a target party member to your location
-* Does not work if the target has certain debuffs, like Bind, or if the target is using Surecast/Arm’s Length
-* Use this to save a party member from failing mechanics
-* If optimizing: use to help party members maintain uptime during certain mechanics (e.g. Final Omega’s Hello World) or to allow a party member to move sooner after casting Limit Break (this does not let the target use actions any faster).
+![Rescue](https://xivapi.com/i/000000/000890_hr1.png)
+
+- Pulls a target party member to your location.
+- Mostly used on party members that are about to fail mechanics, but occaisonally finds use in optimized strategies.
