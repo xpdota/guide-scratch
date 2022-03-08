@@ -6,6 +6,13 @@ Eukrasia itself is a 1-second instant-cast GCD, and the buffed ability will beco
 Neither of these cast times are affected by spell speed, so any Eukrasian GCD will always be 2.5 seconds. In addition,
 unlike a real 2.5 second instant GCD, you will only be able to weave one oGCD without clipping.
 
+If you press Eukrasia by mistake, you cannot press it again to turn it off. However, you can use a `statusoff` macro
+like so:
+
+```
+/statusoff "Eukrasia"
+```
+
 ## Offensive Skills
 
 While Sage does not offer a raid buff, it makes up for it by having the highest personal DPS of all the healers. The
@@ -80,79 +87,268 @@ single target, and beats Dyskrasia for AoE in all practical scenarios.
 
 ## Addersgall Heals
 
-These require a stack of Addersgall to use. Since you get a charge every 20 seconds, and can store up to three, you can
-use these very frequently. In fact, each of them restores 7% of your mana, so you should use them liberally even if not
-necessarily needed.
+The heals in this section have a few things in common:
 
-- Kerachole: It provides a 10% mitigation and 100p regen for 15 seconds to nearby party members. Functionally very
-  similar to Scholar's Sacred Soil, but does not need to be placed (for better or for worse). Its 30 second cooldown
-  means it can be up half the time, and the 500p total healing is more than Ixochole. Generally, this should be your
-  go-to ability for incoming AoE damage. Does not stack with Taurochole. Unlike Asylum, this does **not** have a free
-  tick on application.
-- Ixochole: A simple 400p AoE heal on a 30 second cooldown.
-- Taurochole: A single target, 700 potency heal, plus 10% damage mitigation for 15 seconds. 45 second cooldown. Does not
-  stack with Kerachole.
-- Druochole: A single target, 600p heal. This does not have a cooldown.
+- They all require one Addersgall charge (indicated on the top of the job gauge)
+- They restore 7% of your maximum MP when used
+- They are oGCD
 
-Generally, Addersgall heals should be your first and foremost healing tool, as using them restores mana.
+You get an Addersgall charge every 20 seconds, and can store up to three. Since these give mana, you can and should use
+them liberally even if would be overheal.
 
-### Kerachole Usage
+### Kerachole
+
+AoE mitigation plus regen
+
+- AoE 10% mitigation and 100p regen for 15 seconds (500p over 5 ticks).
+- 30 second cooldown
+
+Functionally very similar to Scholar's Sacred Soil, but does not need to be placed (for better or for worse). Its 30
+second cooldown means it can be up half the time, and the 500p total healing is more than Ixochole. Generally, this
+should be your go-to ability for incoming AoE damage. Does not stack with Taurochole. Unlike Asylum, this does **not**
+have a free tick on application.
+
+#### Kerachole Usage
+
+Since Kerachole has both regen and mitigation, it is ideal to use it shortly before damage. This will allow you to make
+use of the mitigation, while still missing no more than a single tick of the regen.
 
 Being a 15 second mitigation on a 30 second cooldown, Kerachole has very good uptime. If you need to catch two instances
 of damage with less than 15 seconds between them, you can do so with a single Kerachole. If the two instances are
 between 15 and 30 seconds apart, you can catch both by casting the first one early so that it will come off cooldown
 before the second.
 
+### Ixochole
+
+AoE heal
+
+- 400p AoE heal
+- 30 second cooldown
+
+As it is less healing than the regen on Kerachole, and does not offer any mitigation, it is usually preferable to use
+over Ixochole if available, and not needed for anything else in the next 30 seconds.
+
+### Taurochole
+
+Single target heal plus mitigation
+
+- 700p single target heal, plus 10% mitigation for 15 seconds
+- 45 second cooldown
+- Mitigation does not stack with Kerachol
+
+The healing is upfront rather than over time, thus it should ideally be used when both the mitigation and healing will
+come into play. For example, if faced with a raidwide into a tankbuster, the upfront healing will heal off the raidwide,
+while the, mitigation will work nicely for the tankbuster.
+
+### Druochole
+
+Single target heal
+
+- Heals target for 600p
+- No cooldown
+
+It is less potency thatn Taurochole, but has the advantage of no cooldown.
+
 ## Other oGCD heals
 
 Next up, your other oGCD heals. These do not cost anything other than the cooldown itself, so they should be your second
 priority for healing, behind Addersgall heals.
 
-- Kardia: See the [Kardia](#Kardia) section above.
-- Physis: AoE regen plus heal boost on a 60 second cooldown. The regen is 650 potency total over 15 seconds (5 ticks of
-  130p each). The healing up effect only last 10 seconds, but affects all healing, even your co-healer.
-- Haima: A shield that repeatedly re-applies itself when absorbed (up to 5 times, not including the initial shield).
-  Each shield is 300 potency, so the best case scenario is 1800p total absorbed.
-- Panhaima: Like Haima, but AoE, with a lower potency to compensate.
-- Holos: Similar effect to Taurochole, but AoE. However, it does stack with Kerachole or Taurochole. The 300p heal is
-  minor, but still something, so ideally you want to make use of both the healing and damage reduction.
+### Kardia
 
-Again, these cost nothing - try to use them as much as possible!
+Kardia is an indefinite buff, similar to Dance Partner. After applying it to a party member it will remain on them for
+the duration of the raid (persisting through wipes). It causes all of your offensive GCDs to apply a 170 potency heal to
+the target.
 
-### Haima and Panhaima Details
+- The potency of each heal is 170.
+- It can crit, but does so independently of the ability that triggered it.
+- AoE abilities must hit something to trigger it, but will only trigger it once per cast.
+- It has is a small cooldown of 5 seconds to switch targets, but no cooldown on the healing effect.
+- There is a 30 yard range limit for applying it.
+- There is also a larger range limit for the heal effect itself, but it is very large (60y or more) - it is a non-issue
+  for nearly all content in the game.
+
+### Physis
+
+AoE regen and healing boost.
+
+- AoE regen - 650p total over 15 seconds (5 ticks of 130p each).
+- Places a buff on each target for 10 seconds that increases healing received by 10%.
+    - This affects oGCD heals and includes heals from other players.
+    - If you are going to cast other heals in addition to Physis, try to use Physis first so it can amplify those other
+      heals.
+
+### Haima and Panhaima
+
+Haima is a shield that repeatedly re-applies itself when absorbed (up to 5 times, not including the initial shield).
+Each shield is 300 potency, so the best case scenario is 1800p total absorbed. When it expires, it also applies a heal
+of 150p per stack remaining.
+
+- Single target
+- 300p per shield
+- Shields will reapply for up to 15 seconds (see details below)
+- Shields last up to 15 seconds
+- 150p heal per remaining stack when it expires
+
+Panhaima is the same, but AoE. Its potency is lower - 200p shields, and 100p heal per stack remaining. Panhaima and
+Haima do stack.
+
+- AoE version of Haima with lower numbers
+- 200p per shield
+- 100p heal per remaining stack when it expires
+
+#### Details
 
 Haima (and Panhamia, hereafter just Haima) has several intricacies that are worth knowing.
 
 Haima has two separate buffs that it applies. One of them has a stack number, the other does not. The one without the
 stack number is the shield itself. The one with the number indicates how many more times the shield will automatically
-re-apply. The initial application does not consume a stack, so 6 shields total can be applied.
+re-apply. The initial application does not consume a stack, so 6 shields total can be applied. This debuff is what
+applies the healing effect when it expires.
 
 The duration of each buff is 15 seconds. The 15 seconds for the shield buff is reapplied every time the shield is
 consumed, thus while you will not get any more refreshes past the 15 seconds, the final shield buff linger for up to 15
 seconds longer.
 
-Panhaima and Haima do stack.
+### Holos
+
+AoE healing and mitigation
+
+- AoE 300p heal
+- Applies 10% mitigation
+- Stacks with Taurochole/Kerachole
+
+Roughly the AoE equivalent of Taurochole, but a normal cooldown rather than Addersgall. It applies a 300p heal, and a
+10% mitigation for 20 seconds.
+
+Like Taurochole, it is ideal if you can make full use out of both the heal and mitigation. If you only need the
+mitigation, consider using Kerachole. However, if you do need to use it purely for mitigation, the heal being only 300p
+means it isn't the end of the world.
 
 ## GCD Heals
 
-Excluding Pnuema as previous discussed, GCD heals should be your last resort. They cost damage, and Sage's GCD heals are
-not particularly effective. You have Diagnosis as a single target, with Eukrasia adding a shield. Prognosis is an AoE
-heal, with Eukrasia also adding a shield. Generally, the Eukrasian versions are preferred, but both versions should be
-avoided if possible.
+Excluding Pnuema as discussed in the Offensive GCD section, GCD heals should be your last resort. They cost damage, and
+Sage's GCD heals are not particularly effective compared to those of other healers.
+
+If the situation is so dire that you need a non-shield GCD heal (due to damage that has already snapshotted), consider
+using the Eukrasian version anyway, and converting the shielding to healing using Pepsis.
+
+In terms of co-healer planning, Sage should be the absolute last priority for GCD healing. It has the least effective
+GCD heals, and has the highest opportunity cost due to having the hardest-hitting offensive GCDs.
+
+### Diagnosis
+
+Single target 450p heal. Rough equivalent of Physick/Cure 1/Benefic 1 - that is, something to be avoided except during
+downtime or when you have insufficient mana for anything larger.
+
+### Eukrasian Dianosis
+
+Single target 300 potency heal plus 540 potency shield (840p total). Similar to Adloquium, applies another shield on top
+if it crits (another 540 potency, bringing the total potency to 1380). However, since Sage does not have a way to force
+a crit, the crit shield is not something that should be relied upon.
+
+Eukrasian Diagnosis *should* be used during downtime, as it gives Toxicon charges when absorbed.
+
+### Prognosis
+
+AoE 300 potency heal. Extremely low numbers with no benefit make this a very rare ability in practice, especially given
+that Eukrasian Prognosis only costs 100 more mana.
+
+### Eukrasian Prognosis
+
+AoE 100p heal plus 320p shield. As with the base version of this spell, it simply does not have very good numbers.
 
 ## Utility
 
-- Icarus: Your gapcloser. You're the only healer with a gapcloser, so make good use of it. It can be used on an enemy or
-  party member.
-- Soteria: Temporarily boosts the healing from Kardia. Useful for when you need a little extra free single target
-  healing, or general tank upkeep.
-- Zoe: Increases the potency of the next GCD heal by 50%. The important part is the Pneuma counts as a GCD heal for this
-  purpose, so you can make use of this without using a pure GCD heal.
-- Pepsis: Converts shields from your GCD heals that are currently applied to raw healing. Like Scholar's Emergency
-  Tactics, but in reverse (you use the heal first, then use Pepsis).
-- Rhizomata: Gives you a charge of Addersgall. Since Addersgall heals give mana, this can help with MP management even
-  if the healing is not needed.
-- Krasis: Increases healing received by a target. You should cast this on the target that you want to heal, not
-  yourself.
+### Icarus
 
-[//]: # (TODO: Kardia range)
+- Gapcloser
+- Can target a party member or an enemy
+- 45 second cooldown
+- No damage or other effects, so should be used when needed rather than on cooldown
+- 25 yard range is fairly big, but will not span the entire width of many arenas
+
+You are the only healer who has a gapcloser, so make use of it.
+
+### Soteria
+
+- Boosts Kardion healing by 50%
+- Lasts 15 seconds
+- 90 second cooldown
+
+Useful for when you need a little extra free single target healing, or general tank upkeep.
+
+### Zoe
+
+- Increases the potency of the next GCD heal by 50%
+- Must be used within 30 seconds
+- 90 second cooldown
+
+This would be unimpressive if not for the fact that Pneuma is considered a GCD heal. This effectively gives you a
+damage-neutral 900p AoE heal.
+
+### Pepsis
+
+- Converts shields from your GCD heals that are currently applied into raw healing.
+- 450p heal for E.Diagnosis shields
+- 350p heal for E.Prognosis shields
+- Shields are removed when used
+- 30 second cooldown
+
+Like Scholar's Emergency Tactics, but in reverse (you use the heal first, then use Pepsis). Due to the way snapshotting
+works, it is possible to have an instance of damage consume the shield, *and* get healing from Pepsis. To do this, you
+need to use Pepsis between the damage snapshotting and resolving.
+
+### Rhizomata
+
+- Gives you a charge of Addersgall
+- Still subject to a limit of three, so don't use it if you already have two or three charges.
+- Since Addersgall heals give mana, this can help with MP management even if the healing is not needed.
+- 90 second cooldown
+
+### Krasis
+
+- Increases healing received by a target by 20%
+- 10 second duration
+- 60 second cooldown
+- Cast this on the target that you want to heal, not yourself/co-healer
+
+## Role Actions
+
+### Egeiro
+
+"Raise" equivalent. 
+
+- Resurrects target to a weakened state
+- No cooldown
+- 2400mp cost
+- 8 second cast time - use Swiftcast with it
+
+### Lucid Dreaming
+
+![LucidDreaming](https://xivapi.com/i/000000/000865_hr1.png)  \
+
+* Recovers MP over time (3850 MP over 21s)
+* Use when below 8000 MP
+
+### Swiftcast
+![Swiftcast](https://xivapi.com/i/000000/000866_hr1.png)  \
+
+* Makes your next GCD spell instant cast
+* The buff is not consumed when using instant cast GCDs.
+* If desired, save Swiftcast for Resurrection
+* Otherwise, use it in the opener and for movement.
+
+### Surecast
+![Surecast](https://xivapi.com/i/000000/000869_hr1.png)  \
+
+* Prevents most knockback and movement effects and prevents casts from being canceled
+* Use to avoid knockbacks.
+
+### Rescue
+![Rescue](https://xivapi.com/i/000000/000890_hr1.png)  \
+
+* Pulls a target party member to your location
+* Does not work if the target has certain debuffs, like Bind, or if the target is using Surecast/Arm’s Length
+* Use this to save a party member from failing mechanics
+* If optimizing: use to help party members maintain uptime during certain mechanics (e.g. Final Omega’s Hello World) or to allow a party member to move sooner after casting Limit Break (this does not let the target use actions any faster).

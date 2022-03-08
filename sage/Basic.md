@@ -136,9 +136,9 @@ has a 5 second cooldown to switch it to a new target, so it can be changed every
 
 #### Addersgall Heals
 
-These require a stack of Addersgall to use. Since you get a charge every 20 seconds, and can store up to three, you can
-use these very frequently. In fact, each of them restores 7% of your mana, so you should use them liberally even if not
-necessarily needed.
+These oGCD heals require a stack of Addersgall to use. Since you get a charge every 20 seconds, and can store up to
+three, you can use these very frequently. In fact, each of them restores 7% of your mana, so you should use them
+liberally even if not necessarily needed.
 
 - Kerachole: It provides a 10% mitigation and 100p regen for 15 seconds to nearby party members. Functionally very
   similar to Scholar's Sacred Soil, but does not need to be placed (for better or for worse). Its 30 second cooldown
