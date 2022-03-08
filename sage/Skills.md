@@ -77,10 +77,10 @@ won't correctly show the change in HP, hence why sometimes people think it didn'
 instantly as soon as the ability snapshot (0.5 seconds from the end of the cast, i.e. same as slidecasting), so it is
 easy to waste the heal by healing too early.
 
-### Toxicon
+### Toxikon
 
-Toxicon is an instant cast GCD that is damage-neutral with Dosis on a single target, and Toxicon is similar to
-Dyskrasia, but uses "Adderstring" charges and has slightly different scaling. It is damage-neutral with Dosis on a
+Toxikon is an instant cast GCD that is damage-neutral with Dosis on a single target, and Toxikon is similar to
+Dyskrasia, but uses "Addersting" charges and has slightly different scaling. It is damage-neutral with Dosis on a
 single target, and beats Dyskrasia for AoE in all practical scenarios.
 
 [//]: # (Everything below here is copied from the basic guide, need to touch up)
@@ -247,7 +247,7 @@ Single target 300 potency heal plus 540 potency shield (840p total). Similar to 
 if it crits (another 540 potency, bringing the total potency to 1380). However, since Sage does not have a way to force
 a crit, the crit shield is not something that should be relied upon.
 
-Eukrasian Diagnosis *should* be used during downtime, as it gives Toxicon charges when absorbed.
+Eukrasian Diagnosis *should* be used during downtime, as it gives Toxikon charges when absorbed.
 
 ### Prognosis
 
