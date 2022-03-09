@@ -37,6 +37,7 @@ movement still apply, namely:
 - Slidecasting will be by far your most common way of moving while casting. Being able to move for over 60% of each GCD
   is usually enough.
 - Your natural DoT refresh is free movement
+- You should make use of prepositioning whenever possible
 
 With this in mind, let's look at the priorities:
 
