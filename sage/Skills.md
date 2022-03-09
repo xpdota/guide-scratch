@@ -79,11 +79,14 @@ easy to waste the heal by healing too early.
 
 ### Toxikon
 
-Toxikon is an instant cast GCD that is damage-neutral with Dosis on a single target, and Toxikon is similar to
-Dyskrasia, but uses "Addersting" charges and has slightly different scaling. It is damage-neutral with Dosis on a single
-target, and beats Dyskrasia for AoE in all practical scenarios.
+Toxikon is an instant cast 330 potency single target GCD. This makes it a damage neutral movement tool for single target
+encounters. However, it consumes Addersting charges (which are gained from your Eukrasian Diagnosis shield being
+consumed fully), meaning you'll need to plan out your uses. For AoE scenarios, it behaves similar to Dyskrasia, but has
+different scaling, giving it more overall damage in all practical scenarios.
 
-[//]: # (Everything below here is copied from the basic guide, need to touch up)
+In order to use this, you'll need to use Eukrasian Diagnosis, which unfortunately is a GCD heal. However, you can use it
+pre-pull, giving you either one or three charges, depending on whether the fight opens with a raidwide or not. For
+dungeons, it is best to apply the shields before a pull, giving you a free Toxikon to use during the pull.
 
 ## Addersgall Heals
 
@@ -360,4 +363,4 @@ need to use Pepsis between the damage snapshotting and resolving.
 ![Rescue](https://xivapi.com/i/000000/000890_hr1.png)
 
 - Pulls a target party member to your location.
-- Mostly used on party members that are about to fail mechanics, but occaisonally finds use in optimized strategies.
+- Mostly used on party members that are about to fail mechanics, but occasionally finds use in optimized strategies.
