@@ -1,5 +1,8 @@
 # Advanced SGE Guide
 
+Sage being relatively straightforward means that there's not all that much for an "advanced" guide to cover. I'll 
+try to cover some of the areas that aren't covered in the basic guide. 
+
 ## Phlegma Timings
 
 There is a detailed sheet of Phlegma timings available
@@ -19,7 +22,7 @@ looks like this:
 
 The cycle repeats every 6 minutes.
 
-If you do not have 1 minute buffs, then you have more freedom to use Phlegma for movement. As long as you're still
+If you do not have 1-minute buffs, then you have more freedom to use Phlegma for movement. As long as you're still
 getting the correct number of uses in two-minute windows, and you aren't overcapping, you have more freedom over the
 uses that would have otherwise been in the one-minute windows.
 
