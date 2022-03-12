@@ -2,6 +2,17 @@
 <!-- Disable MD033, no inline HTML for anchors on headings and diagrams -->
 <!-- markdownlint-disable MD024 MD033 -->
 
+# Credit
+
+This is mostly based on the [Cactbot Log Guide](https://github.com/xpdota/cactbot/blob/main/docs/LogGuide.md). However,
+much of that guide is auto-generated off Cactbot source. Thus, certain changes like new fields, or changing the name of
+a field for better clarity is difficult. In part, this is due to the fact that the Chinese client runs on an older
+version of the game, and thus an older ACT version, so Cactbot needs to be backwards compatible with older versions of
+the parsing plugin. 
+
+As this document is meant to be completely independent of Cactbot, it can be updated in a more
+timely manner when anything changes on the ACT or game side of things.
+
 # Log Lines and Triggers
 
 This is intended to be a comprehensive guide to log lines for folks who want to write ACT triggers, or any third party
