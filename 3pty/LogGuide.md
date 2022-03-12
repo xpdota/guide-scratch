@@ -24,7 +24,7 @@ Click the hamburger menu in the top left.
 <summary></summary>
 data_flow
   digraph G {
-    size ="4,4";
+    size ="5,5";
     ff14 [label="ff14 servers"]
     ff14 -> ACT [label="network data"]
     network [label="network log files"]
