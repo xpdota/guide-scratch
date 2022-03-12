@@ -12,139 +12,13 @@ This guide was last updated for:
 - [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.08
 - [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.6.4.4
 
-## TOC
+## Table of Contents
 
-<!-- AUTO-GENERATED-CONTENT:START (TOC) -->
-
-- [Data Flow](#data-flow)
-    - [Viewing logs after a fight](#viewing-logs-after-a-fight)
-    - [Importing an old fight](#importing-an-old-fight)
-    - [Importing into ffxivmon](#importing-into-ffxivmon)
-- [Glossary of Terms](#glossary-of-terms)
-    - [Network Data](#network-data)
-    - [Network Log Lines](#network-log-lines)
-    - [ACT Log Lines](#act-log-lines)
-    - [Game Log Lines](#game-log-lines)
-    - [Object/Actor/Entity/Mob/Combatant](#objectactorentitymobcombatant)
-    - [Object ID](#object-id)
-    - [Ability ID](#ability-id)
-- [ACT Log Line Overview](#act-log-line-overview)
-    - [Line 00 (0x00): LogLine](#line-00-0x00-logline)
-        - [Structure](#structure)
-        - [Regexes](#regexes)
-        - [Examples](#examples)
-        - [Don't Write Triggers Against Game Log Lines](#dont-write-triggers-against-game-log-lines)
-    - [Line 01 (0x01): ChangeZone](#line-01-0x01-changezone)
-        - [Structure](#structure-1)
-        - [Regexes](#regexes-1)
-        - [Examples](#examples-1)
-    - [Line 02 (0x02): ChangePrimaryPlayer](#line-02-0x02-changeprimaryplayer)
-        - [Structure](#structure-2)
-        - [Examples](#examples-2)
-    - [Line 03 (0x03): AddCombatant](#line-03-0x03-addcombatant)
-        - [Structure](#structure-3)
-        - [Regexes](#regexes-2)
-        - [Examples](#examples-3)
-    - [Line 04 (0x04): RemoveCombatant](#line-04-0x04-removecombatant)
-        - [Structure](#structure-4)
-        - [Regexes](#regexes-3)
-        - [Examples](#examples-4)
-    - [Line 11 (0x0B): PartyList](#line-11-0x0b-partylist)
-        - [Structure](#structure-5)
-        - [Examples](#examples-5)
-    - [Line 12 (0x0C): PlayerStats](#line-12-0x0c-playerstats)
-        - [Structure](#structure-6)
-        - [Regexes](#regexes-4)
-        - [Examples](#examples-6)
-    - [Line 20 (0x14): NetworkStartsCasting](#line-20-0x14-networkstartscasting)
-        - [Structure](#structure-7)
-        - [Regexes](#regexes-5)
-        - [Examples](#examples-7)
-    - [Line 21 (0x15): NetworkAbility](#line-21-0x15-networkability)
-        - [Structure](#structure-8)
-        - [Regexes](#regexes-6)
-        - [Examples](#examples-8)
-        - [Ability Flags](#ability-flags)
-        - [Ability Damage](#ability-damage)
-        - [Special Case Shifts](#special-case-shifts)
-        - [Ability Examples](#ability-examples)
-    - [Line 22 (0x16): NetworkAOEAbility](#line-22-0x16-networkaoeability)
-    - [Line 23 (0x17): NetworkCancelAbility](#line-23-0x17-networkcancelability)
-        - [Structure](#structure-9)
-        - [Examples](#examples-9)
-    - [Line 24 (0x18): NetworkDoT](#line-24-0x18-networkdot)
-        - [Structure](#structure-10)
-        - [Examples](#examples-10)
-    - [Line 25 (0x19): NetworkDeath](#line-25-0x19-networkdeath)
-        - [Structure](#structure-11)
-        - [Regexes](#regexes-7)
-        - [Examples](#examples-11)
-    - [Line 26 (0x1A): NetworkBuff](#line-26-0x1a-networkbuff)
-        - [Structure](#structure-12)
-        - [Regexes](#regexes-8)
-        - [Examples](#examples-12)
-    - [Line 27 (0x1B): NetworkTargetIcon (Head Marker)](#line-27-0x1b-networktargeticon-head-marker)
-        - [Structure](#structure-13)
-        - [Regexes](#regexes-9)
-        - [Examples](#examples-13)
-        - [Head Marker IDs](#head-marker-ids)
-    - [Line 28 (0x1C): NetworkRaidMarker (Floor Marker)](#line-28-0x1c-networkraidmarker-floor-marker)
-        - [Structure](#structure-14)
-        - [Examples](#examples-14)
-        - [Combatant Marker Codes](#combatant-marker-codes)
-    - [Line 29 (0x1D): NetworkTargetMarker (Player Marker)](#line-29-0x1d-networktargetmarker-player-marker)
-        - [Structure](#structure-15)
-        - [Examples](#examples-15)
-        - [Floor Marker Codes](#floor-marker-codes)
-    - [Line 30 (0x1E): NetworkBuffRemove](#line-30-0x1e-networkbuffremove)
-        - [Structure](#structure-16)
-        - [Regexes](#regexes-10)
-        - [Examples](#examples-16)
-    - [Line 31 (0x1F): NetworkGauge](#line-31-0x1f-networkgauge)
-        - [Structure](#structure-17)
-        - [Examples](#examples-17)
-    - [Line 32 (0x20): NetworkWorld](#line-32-0x20-networkworld)
-    - [Line 33 (0x21): Network6D (Actor Control)](#line-33-0x21-network6d-actor-control)
-        - [Structure](#structure-18)
-        - [Regexes](#regexes-11)
-        - [Examples](#examples-18)
-    - [Line 34 (0x22): NetworkNameToggle](#line-34-0x22-networknametoggle)
-        - [Structure](#structure-19)
-        - [Regexes](#regexes-12)
-        - [Examples](#examples-19)
-    - [Line 35 (0x23): NetworkTether](#line-35-0x23-networktether)
-        - [Structure](#structure-20)
-        - [Regexes](#regexes-13)
-        - [Examples](#examples-20)
-    - [Line 36 (0x24): LimitBreak](#line-36-0x24-limitbreak)
-        - [Structure](#structure-21)
-        - [Examples](#examples-21)
-    - [Line 37 (0x25): NetworkActionSync](#line-37-0x25-networkactionsync)
-    - [Line 38 (0x26): NetworkStatusEffects](#line-38-0x26-networkstatuseffects)
-        - [Structure](#structure-22)
-        - [Regexes](#regexes-14)
-        - [Examples](#examples-22)
-    - [Line 39 (0x27): NetworkUpdateHP](#line-39-0x27-networkupdatehp)
-        - [Structure](#structure-23)
-        - [Examples](#examples-23)
-    - [Line 40 (0x28): Map](#line-40-0x28-map)
-        - [Structure](#structure-24)
-        - [Regexes](#regexes-15)
-        - [Examples](#examples-24)
-    - [Line 41 (0x29): SystemLogMessage](#line-41-0x29-systemlogmessage)
-        - [Structure](#structure-25)
-        - [Regexes](#regexes-16)
-        - [Examples](#examples-25)
-    - [Line 251 (0xFB): Debug](#line-251-0xfb-debug)
-    - [Line 252 (0xFC): PacketDump](#line-252-0xfc-packetdump)
-    - [Line 253 (0xFD): Version](#line-253-0xfd-version)
-    - [Line 254 (0xFE): Error](#line-254-0xfe-error)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+Click the hamburger menu in the top left.
 
 ## Data Flow
 
-![Alt text](https://g.gravizo.com/source/data_flow?https%3A%2F%2Fraw.githubusercontent.com%2Fquisquous%2Fcactbot%2Fmain%2Fdocs%2FLogGuide.md)
+![Alt text](https://g.gravizo.com/source/data_flow?https%3A%2F%2Fraw.githubusercontent.com%2Fxpdota%2Fguide-scratch%2Fmaster%2F3pty%2FLogGuide.md)
 
 <details>
 <summary></summary>
@@ -162,9 +36,13 @@ data_flow
     network -> ACT [label="import"]
     network -> util [label="process"]
     util [label="cactbot util scripts"]
-    plugins [label="triggers, ACT plugins"]
+    plugins [label="ACT Plugins"]
     ACT -> plugins [label="ACT log lines"]
     ACT -> plugins [label="network log lines"]
+    opclients [label="Overlays"]
+    triggevent [label="Triggevent"]
+    plugins -> opclients [label="OverlayPlugin Websocket"]
+    plugins -> triggevent [label="OverlayPlugin Websocket"]
   }
 data_flow
 </details>
