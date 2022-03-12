@@ -8,10 +8,10 @@ This is mostly based on the [Cactbot Log Guide](https://github.com/xpdota/cactbo
 much of that guide is auto-generated off Cactbot source. Thus, certain changes like new fields, or changing the name of
 a field for better clarity is difficult. In part, this is due to the fact that the Chinese client runs on an older
 version of the game, and thus an older ACT version, so Cactbot needs to be backwards compatible with older versions of
-the parsing plugin. 
+the parsing plugin.
 
-As this document is meant to be completely independent of Cactbot, it can be updated in a more
-timely manner when anything changes on the ACT or game side of things.
+As this document is meant to be completely independent of Cactbot, it can be updated in a more timely manner when
+anything changes on the ACT or game side of things.
 
 # Log Lines and Triggers
 
@@ -726,36 +726,34 @@ ACT Log Line Examples:
 
 <!-- AUTO-GENERATED-CONTENT:END -->
 
-Index | Example | Explanation
---- | --- | ---
-0 | 15 | type id (in hex)
-1 | 10532971 | caster object id
-2 | Tini Poutini | caster name
-3 | 07 | ability id
-4 | Attack | ability name
-5 | 40001299 | target object id
-6 | Striking Dummy | target name
-7 | 710003 | [flags](#ability-flags)
-8 | 9420000 | [damage](#ability-damage)
-9-22 | 0 | ??? (see: [special case shifts](#special-case-shifts))
-23 | 2778 | target current hp
-24 | 2778 | target max hp
-25 | 0 | target current mp
-26 | 0 | target max mp
-27 | 1000 | target current tp
-28 | 1000 | target max tp
-29 | -653.9767 | target x position
-30 | -807.7275 | target y position
-31 | 31.99997 | target z position
-32 | 66480 | caster current hp
-33 | 74095 | caster max hp
-34 | 4560 | caster current mp
-35 | 4560 | caster max mp
-36 | 1000 | caster current tp
-37 | 1000 | caster max tp
-38 | -653.0394 | caster x position
-39 | -807.9677 | caster y position
-40 | 31.99997 | caster z position
+| Index | Example        | Explanation                                                     |
+|-------|----------------|-----------------------------------------------------------------|
+| 0     | 15             | type id (in hex)                                                |
+| 1     | 10532971       | caster object id                                                |
+| 2     | Tini Poutini   | caster name                                                     |
+| 3     | 07             | ability id                                                      |
+| 4     | Attack         | ability name                                                    |
+| 5     | 40001299       | target object id                                                |
+| 6     | Striking Dummy | target name                                                     |
+| 7-22  | 0              | pairs of action effects (see: [action effects](#action-effects) |
+| 23    | 2778           | target current hp                                               |
+| 24    | 2778           | target max hp                                                   |
+| 25    | 0              | target current mp                                               |
+| 26    | 0              | target max mp                                                   |
+| 27    | 1000           | target current tp                                               |
+| 28    | 1000           | target max tp                                                   |
+| 29    | -653.9767      | target x position                                               |
+| 30    | -807.7275      | target y position                                               |
+| 31    | 31.99997       | target z position                                               |
+| 32    | 66480          | caster current hp                                               |
+| 33    | 74095          | caster max hp                                                   |
+| 34    | 4560           | caster current mp                                               |
+| 35    | 4560           | caster max mp                                                   |
+| 36    | 1000           | caster current tp                                               |
+| 37    | 1000           | caster max tp                                                   |
+| 38    | -653.0394      | caster x position                                               |
+| 39    | -807.9677      | caster y position                                               |
+| 40    | 31.99997       | caster z position                                               |
 
 Network ability lines are a combination of raw network data
 (e.g. the `710003` flags and the `9420000` damage)
@@ -775,7 +773,7 @@ This means that damage is not necessarily the first flag. If you are simply tryi
 particular ability did, there is no specific field you can look at - you must parse all of them and find the one that
 indicates damage.
 
-#### Ability Flags
+#### Effect Types
 
 The 'flags' field for each pair of values can be further broken down.
 
@@ -1145,60 +1143,60 @@ other IDs you see.
 
 #### Head Marker IDs
 
-ID | Name | Sample Locations | Consistent meaning?
---- | --- | --- | ---
-000[1-2, 4] | Prey Circle (orange) | o6s, The Burn boss 2 | Yes
-0007 | Green Meteor | t9n/s | N/A
-0008 | Ghost Meteor | t9n/s | N/A
-0009 | Red Meteor | t9n/s | N/A
-000A | Yellow Meteor | t9n/s | N/A
-000D | Devour Flower | t6n/s, Sohm Al boss 1 | Yes
-000E | Prey Circle (blue) | t6n/s, o7s | No
-0010 | Teal Crystal | Ultima Weapon Ultimate |N/A
-0011 | Heavenly Laser (red) | t8n/s, e1n | No
-0017 | Red Pinwheel | Sohm Al boss 2, Susano N/EX, e3n/s | No
-0028 | Earth Shaker | Sephirot N/EX, o4s | Yes
-001C | Gravity Puddle | e1n | N/A
-001E | Prey Sphere (orange) | Dun Scaith boss 3, o7n/s | No
-001F | Prey Sphere (blue) | t10 | N/A
-003[2-5] | Sword Markers 1-4 | Ravana N/EX, Twinning boss 1 | N/A
-0037 | Red Dorito | Weeping City boss 2, Ridorana boss 1 | Yes
-0039 | Purple Spread Circle (large) | Ravana N/EX, Shinryu EX | Yes
-003E | Stack Marker (bordered) | o8n/s, Dun Scaith | Yes
-0046 | Green Pinwheel | Dun Scaith boss 1, o5n/s | Yes
-004B | Acceleration Bomb | Weeping City boss 3, Susano N/EX, o4s | Yes
-004C | Purple Fire Circle (large) | e2n/s | Yes
-0054 | Thunder Tether (orange) | Titania EX | N/A
-0057 | Flare | o4n/s, e2n/s | Yes
-005C | Prey (dark) | Dun Scaith boss 3/4, Holminster Switch boss 3 | No
-005D | Stack Marker (tank--no border) | Dun Scaith boss 4, e4s | Yes
-0060 | Orange Spread Circle (small) | Hades N | Yes
-0061 | Chain Tether (orange) | The Vault boss 3, Shinryu N/EX | Yes
-0064 | Stack Marker (bordered) | o3s, Ridorana boss 3 | Yes
-0065 | Spread Bubble | o3s, Byakko EX | N/A
-006E | Levinbolt | Susano EX | N/A
-0076 | Prey (dark) | Bahamut Ultimate | N/A
-0078 | Orange Spread Circle (large) | Akadaemia Anyder | Yes
-007B | Scatter (animated Play symbol) | Rabanastre boss 4 | N/A
-007C | Turn Away (animated eye symbol) | Rabanastre boss 4 | N/A
-007E | Green Crystal | Shinryu N/EX | No
-0083 | Sword Meteor (Tsukuyomi) | Tsukuyomi EX | N/A
-0087 | Prey Sphere (blue) | Akadaemia Anyder | N/A
-008A | Orange Spread Circle (large) | Innocence N/EX, Orbonne boss 3 | Yes
-008B | Purple Spread Circle (small) | Ridorana boss 1, Hades N | Yes
-008E | Death From Above | o10s | N/A
-008F | Death From Below | o10s | N/A
-009[1-8] | Fundamental Synergy Square/Circle | o12s | N/A
-00A1 | Stack Marker (bordered) | Titania N/EX | Yes
-00A9 | Orange Spread Circle (small) | o11n/s, e3n/s | Yes
-00AB | Green Poison Circle | Qitana Ravel | N/A
-00AC | Reprobation Tether | Innocence EX | N/A
-00AE | Blue Pinwheel | Sohm Al boss 2 | N/A
-00B9 | Yellow Triangle (spread) | e4s | N/A
-00BA | Orange Square (stack) | e4s |N/A
-00BB | Blue Square (big spread) | e4s |N/A
-00BD | Purple Spread Circle (giant) | TItania N/EX | Yes
-00BF | Granite Gaol | e4s | N/A
+| ID          | Name                              | Sample Locations                              | Consistent meaning? |
+|-------------|-----------------------------------|-----------------------------------------------|---------------------|
+| 000[1-2, 4] | Prey Circle (orange)              | o6s, The Burn boss 2                          | Yes                 |
+| 0007        | Green Meteor                      | t9n/s                                         | N/A                 |
+| 0008        | Ghost Meteor                      | t9n/s                                         | N/A                 |
+| 0009        | Red Meteor                        | t9n/s                                         | N/A                 |
+| 000A        | Yellow Meteor                     | t9n/s                                         | N/A                 |
+| 000D        | Devour Flower                     | t6n/s, Sohm Al boss 1                         | Yes                 |
+| 000E        | Prey Circle (blue)                | t6n/s, o7s                                    | No                  |
+| 0010        | Teal Crystal                      | Ultima Weapon Ultimate                        | N/A                 |
+| 0011        | Heavenly Laser (red)              | t8n/s, e1n                                    | No                  |
+| 0017        | Red Pinwheel                      | Sohm Al boss 2, Susano N/EX, e3n/s            | No                  |
+| 0028        | Earth Shaker                      | Sephirot N/EX, o4s                            | Yes                 |
+| 001C        | Gravity Puddle                    | e1n                                           | N/A                 |
+| 001E        | Prey Sphere (orange)              | Dun Scaith boss 3, o7n/s                      | No                  |
+| 001F        | Prey Sphere (blue)                | t10                                           | N/A                 |
+| 003[2-5]    | Sword Markers 1-4                 | Ravana N/EX, Twinning boss 1                  | N/A                 |
+| 0037        | Red Dorito                        | Weeping City boss 2, Ridorana boss 1          | Yes                 |
+| 0039        | Purple Spread Circle (large)      | Ravana N/EX, Shinryu EX                       | Yes                 |
+| 003E        | Stack Marker (bordered)           | o8n/s, Dun Scaith                             | Yes                 |
+| 0046        | Green Pinwheel                    | Dun Scaith boss 1, o5n/s                      | Yes                 |
+| 004B        | Acceleration Bomb                 | Weeping City boss 3, Susano N/EX, o4s         | Yes                 |
+| 004C        | Purple Fire Circle (large)        | e2n/s                                         | Yes                 |
+| 0054        | Thunder Tether (orange)           | Titania EX                                    | N/A                 |
+| 0057        | Flare                             | o4n/s, e2n/s                                  | Yes                 |
+| 005C        | Prey (dark)                       | Dun Scaith boss 3/4, Holminster Switch boss 3 | No                  |
+| 005D        | Stack Marker (tank--no border)    | Dun Scaith boss 4, e4s                        | Yes                 |
+| 0060        | Orange Spread Circle (small)      | Hades N                                       | Yes                 |
+| 0061        | Chain Tether (orange)             | The Vault boss 3, Shinryu N/EX                | Yes                 |
+| 0064        | Stack Marker (bordered)           | o3s, Ridorana boss 3                          | Yes                 |
+| 0065        | Spread Bubble                     | o3s, Byakko EX                                | N/A                 |
+| 006E        | Levinbolt                         | Susano EX                                     | N/A                 |
+| 0076        | Prey (dark)                       | Bahamut Ultimate                              | N/A                 |
+| 0078        | Orange Spread Circle (large)      | Akadaemia Anyder                              | Yes                 |
+| 007B        | Scatter (animated Play symbol)    | Rabanastre boss 4                             | N/A                 |
+| 007C        | Turn Away (animated eye symbol)   | Rabanastre boss 4                             | N/A                 |
+| 007E        | Green Crystal                     | Shinryu N/EX                                  | No                  |
+| 0083        | Sword Meteor (Tsukuyomi)          | Tsukuyomi EX                                  | N/A                 |
+| 0087        | Prey Sphere (blue)                | Akadaemia Anyder                              | N/A                 |
+| 008A        | Orange Spread Circle (large)      | Innocence N/EX, Orbonne boss 3                | Yes                 |
+| 008B        | Purple Spread Circle (small)      | Ridorana boss 1, Hades N                      | Yes                 |
+| 008E        | Death From Above                  | o10s                                          | N/A                 |
+| 008F        | Death From Below                  | o10s                                          | N/A                 |
+| 009[1-8]    | Fundamental Synergy Square/Circle | o12s                                          | N/A                 |
+| 00A1        | Stack Marker (bordered)           | Titania N/EX                                  | Yes                 |
+| 00A9        | Orange Spread Circle (small)      | o11n/s, e3n/s                                 | Yes                 |
+| 00AB        | Green Poison Circle               | Qitana Ravel                                  | N/A                 |
+| 00AC        | Reprobation Tether                | Innocence EX                                  | N/A                 |
+| 00AE        | Blue Pinwheel                     | Sohm Al boss 2                                | N/A                 |
+| 00B9        | Yellow Triangle (spread)          | e4s                                           | N/A                 |
+| 00BA        | Orange Square (stack)             | e4s                                           | N/A                 |
+| 00BB        | Blue Square (big spread)          | e4s                                           | N/A                 |
+| 00BD        | Purple Spread Circle (giant)      | TItania N/EX                                  | Yes                 |
+| 00BF        | Granite Gaol                      | e4s                                           | N/A                 |
 
 <a name="line28"></a>
 
