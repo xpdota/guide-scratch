@@ -13,6 +13,9 @@ the parsing plugin.
 As this document is meant to be completely independent of Cactbot, it can be updated in a more timely manner when
 anything changes on the ACT or game side of things.
 
+This guide, as with the original it is based off of,
+[is licensed under Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0). See [license](LICENSE) for details.
+
 # Log Lines and Triggers
 
 This is intended to be a comprehensive guide to log lines for folks who want to write ACT triggers, or any third party
@@ -140,7 +143,7 @@ A game log line is a specific type of ACT log line with type `00`. These log lin
 windows in game, possibly in the Battle Log tab. Try
 to [avoid writing triggers](#dont-write-triggers-against-game-log-lines) using these lines.
 
-See: [Line 00](#line00) for examples.
+See: [Line 00](#line-00-0x00-logline) for examples.
 
 ### Object/Actor/Entity/Mob/Combatant
 
@@ -160,8 +163,8 @@ represented as hitting the id `E0000000` (and a blank name).
 
 One thing to note is that in most raids, there are many mobs in the scene with the same name. For example, in t13, there
 are about twenty Bahamut Prime mobs in the zone, most of which are invisible. You can often differentiate these by HP
-values (see [AddCombatant](#line03) log lines). Often these invisible mobs are used as the damaging actors, which is why
-in UWU Titan Phase, both Garuda and Titan use Rock Throw to put people in jails.
+values (see [AddCombatant](#line-03-0x03-addcombatant) log lines). Often these invisible mobs are used as the damaging
+actors, which is why in UWU Titan Phase, both Garuda and Titan use Rock Throw to put people in jails.
 
 ### Ability ID
 
@@ -192,9 +195,18 @@ However, given that both network and parsed logs nowadays are pretty much just a
 within them, it is usually easier to simply split them on the delimiter (`|` for network lines, `:` for parsed lines)
 . You also don't have to worry the efficiency of your regular expression.
 
+Ideally, your best best for anything more complicated is to use something like Cactbot that pre-parses a lot for you.
+This has the advantage that if a line format change, the fix only needs to be made in a single, central place, and then
+triggers and overlays will work again.
+
+You can also use Triggevent which goes a step further and parses everything into rich types. For example, any name+ID
+combination gets turned into a single object that can be further queried.
+
+Both of the options also provide significantly better readability than regular expressions.
+
 ### Other General Tips
 
-- Prefer IDs to names. Names may be language specific. -
+- Prefer IDs to names. Names may be language specific.
 - Sometimes you need more information than is available in just the particular line. For example, you may need a
   combination of NPC ID from a 03-line and ability ID from a 26-line. That, or you need some kind of repository that
   stores combatant info, like what OverlayPlugin or Triggevent provides.
@@ -1233,7 +1245,7 @@ ACT Log Line Examples:
 #### Combatant Marker Codes
 
 | ID  | Description |
-| --- | ----------- |
+|-----|-------------|
 | 0   | A           |
 | 1   | B           |
 | 2   | C           |
@@ -1278,7 +1290,7 @@ ACT Log Line Examples:
 #### Floor Marker Codes
 
 | ID  | Description |
-| --- | ----------- |
+|-----|-------------|
 | 0   | Hexagon 1   |
 | 1   | Hexagon 2   |
 | 2   | Hexagon 3   |
@@ -1298,8 +1310,8 @@ ACT Log Line Examples:
 
 ### Line 30 (0x1E): NetworkBuffRemove
 
-This is the paired "end" message to the [NetworkBuff](#line26) "begin" message. This message corresponds to the loss of
-effects (either positive or negative).
+This is the paired "end" message to the [NetworkBuff](#line-26-0x1a-networkbuff) "begin" message. This message
+corresponds to the loss of effects (either positive or negative).
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=LosesEffect&lang=en-US) -->
 
@@ -1589,8 +1601,8 @@ ACT Log Line Examples:
 
 The type of tether in the above three lines are `0001`, `0007`, and `006E` respectively.
 
-Like [NetworkTargetIcon (Head Marker)](#line27), Type is consistent across fights and represents a particular visual
-style of tether.
+Like [NetworkTargetIcon (Head Marker)](#line-27-0x1b-networktargeticon-head-marker), Type is consistent across fights
+and represents a particular visual style of tether.
 
 There are also a number of examples where tethers are generated in some other way:
 
@@ -1656,8 +1668,9 @@ ACT Log Line Examples:
 
 This log line is a sync packet that tells the client to render an action that has previously resolved.
 (This can be an animation or text in one of the game text logs.)
-It seems that it is emitted at the moment an action "actually happens" in-game, while the [NetworkAbility](#line21)
-or [NetworkAOEAbility](#line22) line is emitted before, at the moment the action is "locked in".
+It seems that it is emitted at the moment an action "actually happens" in-game, while
+the [NetworkAbility](#line-21-0x15-networkability)
+or [NetworkAOEAbility](#line-22-0x16-networkaoeability) line is emitted before, at the moment the action is "locked in".
 
 [As Ravahn explains it](https://discordapp.com/channels/551474815727304704/551476873717088279/733336512443187231):
 
@@ -1704,9 +1717,9 @@ not being updated until the game client processes the data.
 
 ### Line 38 (0x26): NetworkStatusEffects
 
-For NPC opponents (and possibly PvP) this log line is generated alongside [NetworkDoT](#line24) lines. For non-fairy
-allies, it is generated alongside [NetworkBuff](#line26),
-[NetworkBuffRemove](#line30), and [NetworkActionSync](#line37).
+For NPC opponents (and possibly PvP) this log line is generated alongside [NetworkDoT](#line-24-0x18-networkdot) lines.
+For non-fairy allies, it is generated alongside [NetworkBuff](#line-26-0x1a-networkbuff),
+[NetworkBuffRemove](#line-26-0x1a-networkbuff), and [NetworkActionSync](#line-37-0x25-networkactionsync).
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=StatusEffect&lang=en-US) -->
 
@@ -1746,8 +1759,9 @@ ACT Log Line Examples:
 
 <!-- AUTO-GENERATED-CONTENT:END -->
 
-It seems likely that this line was added in order to extend functionality for the [NetworkBuff](#line26),
-[NetworkBuffRemove](#line30), and [NetworkActionSync](#line37)
+It seems likely that this line was added in order to extend functionality for
+the [NetworkBuff](#line-26-0x1a-networkbuff),
+[NetworkBuffRemove](#line-30-0x1e-networkbuffremove), and [NetworkActionSync](#line-37-0x25-networkactionsync)
 log lines without breaking previous content or plugins.
 
 <a name="line39"></a>
@@ -1755,7 +1769,8 @@ log lines without breaking previous content or plugins.
 ### Line 39 (0x27): NetworkUpdateHP
 
 It's not completely clear what triggers this log line, but it contains basic information comparable
-to [NetworkActionSync](#line37) and [NetworkStatusEffects](#line38). It applies to allies and fairies/pets.
+to [NetworkActionSync](#line-37-0x25-networkactionsync) and [NetworkStatusEffects](#line-38-0x26-networkstatuseffects).
+It applies to allies and fairies/pets.
 
 This log line tends to fire roughly every 3 seconds in some cases.
 
