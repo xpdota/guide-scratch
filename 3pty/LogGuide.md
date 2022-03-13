@@ -202,7 +202,11 @@ triggers and overlays will work again.
 You can also use Triggevent which goes a step further and parses everything into rich types. For example, any name+ID
 combination gets turned into a single object that can be further queried.
 
-Both of the options also provide significantly better readability than regular expressions.
+In any case, whether you're using Cactbot, Triggevent, or something that *is* based on regices, like Triggernometry, you
+frequently run into situations where the regex alone isn't enough. For example, a regex *can* filter player vs NPC IDs (
+as players start with `0x1` while NPCs start with `0x4`) but do not have an easy way to filter to the local player.
+
+Both of the options also provide significantly better readability than raw regular expressions.
 
 ### Other General Tips
 
