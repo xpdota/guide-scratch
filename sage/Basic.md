@@ -100,6 +100,8 @@ Phlemga is a damage gain, while Toxikon and Pneuma are damage neutral. Let's tal
 
 #### Phlegma
 
+![Phlegma III](https://xivapi.com/i/003000/003681_hr1.png)
+
 As it is a DPS gain, you should try to use it when raid buffs are active to maximize your damage output. This typically
 means trying to dump as many charges as possible just after each two-minute mark (e.g. in the opener, a few seconds
 after 2:00, 4:00, etc). However, be sure to not let it overcap. Apart from two-minute bursts, it is best used for
@@ -108,6 +110,8 @@ bosses going untargetable, and dump charges before the boss goes away if needed 
 example, before going into adds phase in P3S).
 
 #### Toxikon
+
+![Toxikon II](https://xivapi.com/i/003000/003684_hr1.png)
 
 Toxikon's advantage is that it is the same potency as Dosis, but is instant cast, thus allowing free movement while
 using it. Toxikon requires Addersting charges to use. These can only be attained by having your shield from Eukrasian
@@ -118,6 +122,8 @@ You can repeat this process during any downtime that may exist in the fight, giv
 
 #### Pneuma
 
+![Pneuma](https://xivapi.com/i/003000/003686_hr1.png)
+
 Pneuma is also the same potency as Dosis, but it comes with a fairly powerful AoE heal attached. Its 600 potency heal
 can be boosted to 900p using Zoe, making it one of the strongest raw heals. However, being exactly the same potency as
 Dosis, it should not be used on a single target if the healing is not needed.
@@ -125,6 +131,8 @@ Dosis, it should not be used on a single target if the healing is not needed.
 ### Healing
 
 #### Kardia
+
+![Kardia](https://xivapi.com/i/003000/003653_hr1.png)
 
 First, let's talk about Kardia. Kardia is an indefinite buff, similar to Dance Partner. You can put it on a party
 member, and it will remain on them for the duration of the raid (persisting even through wipes). It simply causes any of
@@ -140,7 +148,7 @@ These oGCD heals require a stack of Addersgall to use. Since you get a charge ev
 three, you can use these very frequently. In fact, each of them restores 7% of your mana, so you should use them
 liberally even if not necessarily needed.
 
-- Kerachole: It provides a 10% mitigation and 100p regen for 15 seconds to nearby party members. Functionally very
+- Kerachole: Provides a 10% mitigation and 100p regen for 15 seconds to nearby party members. Functionally very
   similar to Scholar's Sacred Soil, but does not need to be placed (for better or for worse). Its 30 second cooldown
   means it can be up half the time, and the 500p total healing is more than Ixochole. Generally, this should be your
   go-to ability for incoming AoE damage. The damage reduction does not stack with Taurochole.

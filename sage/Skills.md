@@ -1,5 +1,7 @@
 ## Before you Start: Eukrasia
 
+![Eukrasia](https://xivapi.com/i/003000/003658_hr1.png)
+
 First, a note about skills with "Eukrasian" in the name - these are upgraded versions of other skills that you would
 access by using the "Eukrasia" skill first. For example, to cast Eukrasian Dosis, first cast Eukrasia, then cast Dosis.
 Eukrasia itself is a 1-second instant-cast GCD, and the buffed ability will become a 1.5-second instant-cast GCD.
@@ -21,10 +23,14 @@ provides free healing to your Kardion target. Let's take a look at how Sage's of
 
 ### Dosis
 
+![Dosis III](https://xivapi.com/i/003000/003680_hr1.png)
+
 This is your main filler offensive GCD. When you have nothing higher priority to cast, use this. At 330 potency, it is
 the most powerful of all the healer single target filler GCDs.
 
 ### Eukrasian Dosis
+
+![Eukrasian Dosis III](https://xivapi.com/i/003000/003682_hr1.png)
 
 Eukrasian Dosis is your damage over time skill. Like the other healers, it lasts 30 seconds. DoT (and HoT) effects in
 FFXIV operate on "server ticks", once every 3 seconds. On each of these ticks, DoTs and HoTs will apply their listed
@@ -34,11 +40,15 @@ Eukrasia, but the debuff application itself is instant.
 
 ### Dyskrasia
 
+![Dyskrasia II](https://xivapi.com/i/003000/003683_hr1.png)
+
 Your spammable AoE cooldown. With 170 potency per target, compared to 330 on Dosis, It becomes a gain on just two
 targets. In addition, it is an instant cast, so it can be used while moving. Ideally, it would never be used on a single
 target, but it *can* function as a last resort movement skill.
 
 ### Phlegma
+
+![Phlegma III](https://xivapi.com/i/003000/003681_hr1.png)
 
 Phlegma is unique as it is the only healer offensive GCD that operates on a charge system while still being a DPS gain.
 It deals 510 damage to the main target, and 255 on other targets within a 5 yalm radius of the primary target. The range
@@ -62,6 +72,8 @@ are a bit more spread out.
 
 ### Pneuma
 
+![Pneuma](https://xivapi.com/i/003000/003686_hr1.png)
+
 Pneuma is a combination damage and healing ability. It is damage-neutral compared to Dosis, with the same 330 potency on
 the main target. For multiple targets, it is 198p on each target, making it fall behind only Phlegma for AoE. The 600p
 heal is already decent, but it is best used with Zoe for a 900p damage-neutral AoE heal.
@@ -78,6 +90,8 @@ instantly as soon as the ability snapshot (0.5 seconds from the end of the cast,
 easy to waste the heal by healing too early.
 
 ### Toxikon
+
+![Toxikon II](https://xivapi.com/i/003000/003684_hr1.png)
 
 Toxikon is an instant cast 330 potency single target GCD. This makes it a damage neutral movement tool for single target
 encounters. However, it consumes Addersting charges (which are gained from your Eukrasian Diagnosis shield being
@@ -100,6 +114,8 @@ You get an Addersgall charge every 20 seconds, and can store up to three. Since 
 them liberally even if would be overheal.
 
 ### Kerachole
+
+![Kerachole](https://xivapi.com/i/003000/003666_hr1.png)
 
 AoE mitigation plus regen
 
@@ -124,6 +140,8 @@ before the second.
 
 ### Ixochole
 
+![Ixochole](https://xivapi.com/i/003000/003667_hr1.png)
+
 AoE heal
 
 - 400p AoE heal
@@ -138,6 +156,8 @@ preferable. However, Ixochole still has many uses, such as:
 
 ### Taurochole
 
+![Taurochole](https://xivapi.com/i/003000/003671_hr1.png)
+
 Single target heal plus mitigation
 
 - 700p single target heal, plus 10% mitigation for 15 seconds
@@ -149,6 +169,8 @@ come into play. For example, if faced with a raidwide into a tankbuster, the upf
 while the mitigation will work nicely for the tankbuster.
 
 ### Druochole
+
+![Druochole](https://xivapi.com/i/003000/003664_hr1.png)
 
 Single target heal
 
@@ -164,6 +186,8 @@ priority for healing, behind Addersgall heals.
 
 ### Kardia
 
+![Kardia](https://xivapi.com/i/003000/003653_hr1.png)
+
 Kardia is an indefinite buff, similar to Dance Partner. After applying it to a party member it will remain on them for
 the duration of the raid (persisting through wipes). It causes all of your offensive GCDs to apply a 170 potency heal to
 the target.
@@ -178,6 +202,8 @@ the target.
 
 ### Physis
 
+![Physis II](https://xivapi.com/i/003000/003670_hr1.png)
+
 AoE regen and healing boost.
 
 - AoE regen - 650p total over 15 seconds (5 ticks of 130p each).
@@ -187,6 +213,9 @@ AoE regen and healing boost.
       heals.
 
 ### Haima and Panhaima
+
+![Haima](https://xivapi.com/i/003000/003673_hr1.png)
+![Panhaima](https://xivapi.com/i/003000/003679_hr1.png)
 
 Haima is a shield that repeatedly re-applies itself when absorbed (up to 5 times, not including the initial shield).
 Each shield is 300 potency, so the best case scenario is 1800p total absorbed. When it expires, it also applies a heal
@@ -223,6 +252,8 @@ would not last the entire duration. This includes the heal when the buff expires
 
 ### Holos
 
+![Holos](https://xivapi.com/i/003000/003678_hr1.png)
+
 AoE healing and mitigation
 
 - AoE 300p heal
@@ -249,10 +280,14 @@ GCD heals, and has the highest opportunity cost due to having the hardest-hittin
 
 ### Diagnosis
 
+![Diagnosis](https://xivapi.com/i/003000/003652_hr1.png)
+
 Single target 450p heal. Rough equivalent of Physick/Cure 1/Benefic 1 - that is, something to be avoided except during
 downtime or when you have insufficient mana for anything larger.
 
-### Eukrasian Dianosis
+### Eukrasian Diagnosis
+
+![Eukrasian Diagnosis](https://xivapi.com/i/003000/003659_hr1.png)
 
 Single target 300 potency heal plus 540 potency shield (840p total). Similar to Adloquium, applies another shield on top
 if it crits (another 540 potency, bringing the total potency to 1380). However, since Sage does not have a way to force
@@ -262,16 +297,22 @@ Eukrasian Diagnosis *should* be used during downtime, as it gives Toxikon charge
 
 ### Prognosis
 
+![Prognosis](https://xivapi.com/i/003000/003654_hr1.png)
+
 AoE 300 potency heal. Extremely low numbers with no benefit make this a very rare ability in practice, especially given
 that Eukrasian Prognosis only costs 100 more mana.
 
 ### Eukrasian Prognosis
+
+![Eukrasian Prognosis](https://xivapi.com/i/003000/003660_hr1.png)
 
 AoE 100p heal plus 320p shield. As with the base version of this spell, it simply does not have very good numbers.
 
 ## Utility
 
 ### Icarus
+
+![Icarus](https://xivapi.com/i/003000/003663_hr1.png)
 
 - Gapcloser
 - Can target a party member or an enemy
@@ -283,6 +324,8 @@ You are the only healer who has a gapcloser, so make use of it.
 
 ### Soteria
 
+![Soteria](https://xivapi.com/i/003000/003662_hr1.png)
+
 - Boosts Kardion healing by 50%
 - Lasts 15 seconds
 - 90 second cooldown
@@ -290,6 +333,8 @@ You are the only healer who has a gapcloser, so make use of it.
 Useful for when you need a little extra free single target healing, or general tank upkeep.
 
 ### Zoe
+
+![Zoe](https://xivapi.com/i/003000/003668_hr1.png)
 
 - Increases the potency of the next GCD heal by 50%
 - Must be used within 30 seconds
@@ -299,6 +344,8 @@ This would be unimpressive if not for the fact that Pneuma is considered a GCD h
 damage-neutral 900p AoE heal.
 
 ### Pepsis
+
+![Pepsis](https://xivapi.com/i/003000/003669_hr1.png)
 
 - Converts shields from your GCD heals that are currently applied into raw healing.
 - 450p heal for E.Diagnosis shields
@@ -312,6 +359,8 @@ need to use Pepsis between the damage snapshotting and resolving.
 
 ### Rhizomata
 
+![Rhizomata](https://xivapi.com/i/003000/003677_hr1.png)
+
 - Gives you a charge of Addersgall
 - Still subject to a limit of three, so don't use it if you already have two or three charges.
 - Since Addersgall heals give mana, this can help with MP management even if the healing is not needed.
@@ -319,12 +368,16 @@ need to use Pepsis between the damage snapshotting and resolving.
 
 ### Krasis
 
+![Krasis](https://xivapi.com/i/003000/003685_hr1.png)
+
 - Increases healing received by a target by 20%
 - 10 second duration
 - 60 second cooldown
 - Cast this on the target that you want to heal, not yourself/co-healer
 
 ## Role Actions
+
+![Egeiro](https://xivapi.com/i/003000/003655_hr1.png)
 
 ### Egeiro
 
@@ -337,7 +390,7 @@ need to use Pepsis between the damage snapshotting and resolving.
 
 ### Lucid Dreaming
 
-![LucidDreaming](https://xivapi.com/i/000000/000865_hr1.png)
+![Lucid Dreaming](https://xivapi.com/i/000000/000865_hr1.png)
 
 - Recovers MP over time (3850 MP over 21s)
 - Use when below 8000 MP
