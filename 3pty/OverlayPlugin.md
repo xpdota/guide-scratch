@@ -7,7 +7,7 @@ feed.
 ## Basics
 
 OverlayPlugin shares data with clients via WebSocket. In order to expose the WebSocket server to other clients, you must
-first
+first configure it on this tab:
 ![OverlayPlugin Websocket Configuration](images/overlaypluginwebsocket.png)
 
 Pick the IP address to listen on (127.0.0.1 or ::1 if you want to only accept local connections, best for security
@@ -141,8 +141,8 @@ order to indirectly determine the type of the response, even if you don't actual
 exact request. The only time wh
 
 The `rseq` value does not need to be a number, and it does not need to be unique. For example, Triggevent uses
-`"allCombatants"` as the rseq for all of its requests to `getCombatants` for all combatants - it only cares about the *
-type* of the message - the request is fire-and-forget.
+`"allCombatants"` as the rseq for all of its requests to `getCombatants` for all combatants - it only cares about the
+*type* of the message - the request is fire-and-forget.
 
 One of the most important calls is `say`, as that is how you can have a TTS message be spoken by ACT.
 
