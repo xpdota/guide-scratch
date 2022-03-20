@@ -4,6 +4,10 @@ Welcome to the basic guide for Sage, which should give you everything you need t
 fairly basic and does not cover every little detail. However, it should point you in the right general direction, and
 give you a feel for the class.
 
+### Author and Acknowledgements
+
+This guide was written by Wynn Dohz, with special thanks to Shy and all the other healer mentors.
+
 ## Overview
 
 Sage is a very powerful healer with a smooth flow and straightforward skills. Sage brings high personal damage, tons of
