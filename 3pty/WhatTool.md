@@ -149,6 +149,7 @@ and use these.
 ### Triggernometry
 
 Example:
+
 ![img.png](images/triggernometry.png)
 
 The editor is point-and-click. However, while minimal syntax checking exists, things like variable names are not
@@ -219,26 +220,26 @@ written in Groovy will be coming shortly.
 
 That same Acting Role trigger from above:
 
+[//]: # (@formatter:off)
 ```java
-    private final ModifiableCallout<BuffApplied> acting=new ModifiableCallout<>("Acting Role","Acting {role}");
+private final ModifiableCallout<BuffApplied> acting = new ModifiableCallout<>("Acting Role","Acting {role}");
 
 @HandleEvents
-public void actingRole(EventContext context,BuffApplied event){
-		if(event.getTarget().isThePlayer()){
-		int id=(int)event.getBuff().getId();
-final String role;
-		switch(id){
-		case 0xB6D->role="DPS";
-		case 0xB6E->role="Healer";
-		case 0xB6F->role="Tank";
-default ->{
-		return;
-		}
-		}
-		context.accept(acting.getModified(event,Map.of("role",role)));
-		}
-		}
+public void actingRole(EventContext context, BuffApplied event){
+    if (event.getTarget().isThePlayer()) {
+        int id = (int) event.getBuff().getId();    
+        final String role;
+        switch (id) {
+            case 0xB6D -> role = "DPS";
+            case 0xB6E -> role = "Healer";
+            case 0xB6F -> role = "Tank";
+            default -> { return; }
+        }
+        context.accept(acting.getModified(event, Map.of("role", role)));
+    }
+}
 ```
+[//]: # (@formatter:on)
 
 Like Cactbot, this results in a nice UI where the trigger's output can be customized:
 ![img.png](images/te_customize.png)
