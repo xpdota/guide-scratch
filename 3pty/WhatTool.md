@@ -57,7 +57,7 @@ entered.
 | Tool                                  | Personal Callout | Automark | Change Prio Order                                                | No Manual Name Entry                                                      | Notes                                                                                                 |
 |---------------------------------------|------------------|----------|------------------------------------------------------------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Triggevent                            | ✅                | ✅        | ✅ - drag and drop                                                | ✅                                                                         | Unified, drag and drop to set up priority list once, works for both personal call and automark        |
-| Triggernometry + King Pendragon Jails |                  | ✅        | ✅ - drag and drop but requires editing the trigger manually      | ✅                                                                         | Works better than old Triggernometry automarks, but still slightly more difficult to set up and debug |
+| Triggernometry + King Pendragon Jails | ❌                | ✅        | ✅ - drag and drop but requires editing the trigger manually      | ✅                                                                         | Works better than old Triggernometry automarks, but still slightly more difficult to set up and debug |
 | Cactbot                               | ✅                | ❌        | ❌ - hardcoded to be alphabetical                                 | ✅                                                                         | Cannot customize sort order                                                                           |
 | Bespoke Jail Plugin (.dll)            | ✅                | ❌        | ✅ - no drag and drop, must be typed/pasted manually in each slot | ❌ requires manual entry of entire prio list or passing around an XML file | It's crap. Stop using it.                                                                             |
 
@@ -82,12 +82,12 @@ refreshes when it wouldn't actually cost a tick. Example:
 
 ![dot tracker with ticks](https://user-images.githubusercontent.com/14287379/158668694-38697d1f-3e3a-4afb-8b68-bb8c9ff531fb.png)
 
-| Tool                         | DoTs supported                    | TTS | Visual | Multi Target | Tick Display                          |
-|------------------------------|-----------------------------------|-----|--------|--------------|---------------------------------------|
-| Triggevent                   | Fixed list                        | ✅   | ✅      | ✅            | ✅                                     |
-| Various Triggernometry Repos | Fixed list + make your own        | ✅   | ✅      | ❌            | ✅ (but not * on* the dot tracker bar) |
-| Cactbot jobs                 | Fixed list                        | ?   | ✅      | ❌            | ?                                     |
-| Hojoring Special Spell Timer | Must make your own for everything | ?   | ✅      | ✅            | ?                                     |
+| Tool                         | DoTs supported                    | TTS | Visual | Multi Target | Tick Display                         |
+|------------------------------|-----------------------------------|-----|--------|--------------|--------------------------------------|
+| Triggevent                   | Fixed list                        | ✅   | ✅      | ✅            | ✅                                    |
+| Various Triggernometry Repos | Fixed list + make your own        | ✅   | ✅      | ❌            | ✅ (but separate from the bar itself) |
+| Cactbot jobs                 | Fixed list                        | ?   | ✅      | ❌            | ?                                    |
+| Hojoring Special Spell Timer | Must make your own for everything | ?   | ✅      | ✅            | ?                                    |
 
 ## Cooldown Tracking
 
@@ -242,7 +242,6 @@ default ->{
 
 Like Cactbot, this results in a nice UI where the trigger's output can be customized:
 ![img.png](images/te_customize.png)
-
 
 Similar to placeholders in Cactbot callouts, these are supported. However, for the visual text, they are constantly
 re-evaluated. Hence, something like this:
