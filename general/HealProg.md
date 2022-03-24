@@ -116,6 +116,10 @@ version, it offers 3850 MP per use. You cannot ignore it, or you will run out of
 If you find yourself needing to use GCD heals which are MP-efficient but not GCD-efficient (such as Cure I, Prognosis,
 or Physick), you should re-evaluate your heal plan and piety level.
 
+### Mana Potions
+
+It is okay to hold pots for MP potions such as Super-Ethers.
+
 ## Optimize As You Go
 
 When you see a new mechanic, start out by healing it in a very safe manner. Start cutting heals out once you're
