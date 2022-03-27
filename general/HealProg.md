@@ -1,5 +1,15 @@
 # Healing When You Actually Need to Heal
 
+In Ultimates and early Savage prog, healing is significantly different than in an optimized run. It's easy to get so 
+used to optimized healing, especially if you're doing repetitive parse runs, that you can forget what it feels like 
+to actually heal. On top of that, especially if you prog relatively fast, you simply won't be in that situation for 
+very long in Savage fights. Furthermore, the weaker DPS checks in Ultimates can give people the wrong idea about how 
+much they should be optimizing. You should absolutely still be optimizing your healing, rather than writing it off 
+as unnecessary.
+
+This guide will go over some of the basics of optimizing your healing during Ultimates. Most of it will also apply 
+to early Savage prog, since squeezing out that extra DPS can be the difference between an enrage and a kill.
+
 [//]: # (TODO: make this intro better)
 A guide for Ultimate. Some of these also apply to early Savage prog, where you will also see yourself using more GCD
 heals.
@@ -21,18 +31,25 @@ healer combined DPS. This makes it important to prioritize and plan with your co
 
 This does not necessarily mean every healer will be doing the same amount of healing. For example, if you could handle a
 mechanic with two AST GCD heals, two SGE GCD heals, or one of each, it is most likely better for the AST to pick up both
-heals, since AST loses less damage output if they need to GCD heal. 
+heals, since AST loses less damage output if they need to GCD heal.
 
-However, this needs to be balanced against making your co-healer dip into less efficient heals. For example, instead 
-of a WHM using a Medica II and a Medica I, while the SGE does nothing, you would get slightly higher heal potency 
-out of a Mecica II and a Eukrasian Prognosis.
+However, this needs to be balanced against making your co-healer dip into less efficient heals. For example, instead of
+a WHM using a Medica II and a Medica I, while the SGE does nothing, you would get slightly higher heal potency out of a
+Mecica II and a Eukrasian Prognosis.
+
+However, none of this works unless you coordinate. If you drop a heal, but your co-healer has to do another GCD heal to
+compensate, you may not have actually gained anything. Planning out heals can be as formal or ad-hoc as you like -
+different things will work for different groups. Generally, you should start with a plan that works, and optimize from
+there. You can experiment with cutting out some heals during raid, but be sure to coordinate with your co-healer so that
+you don't both try to cut something out and cause a wipe. After raid hours, be sure to take a look at logs and find
+heals that can be cut out, or shift GCD heals around.
 
 ## You Will Be Using GCDs To Heal
 
-Once you've been reclearing a raid tier for a while, it's easy to forget what healing feels like in an ultimate or early
-savage prog. You won't just be GCD healing because you're still progging the fight - even an optimized run of an
-ultimate is going to involve quite a bit of GCD healing. As such, you tend to not really think about "optimizing"
-GCD heals, since that would be an oxymoron in any other scenario.
+Once you've been reclearing a raid tier for a while, it's easy to forget about how GCD to optimize GCD heal usage. You
+won't just be GCD healing because you're still progging the fight - even an optimized run of an ultimate is going to
+involve quite a bit of GCD healing. As such, you tend to not really think about "optimizing" GCD heals, since that would
+be an oxymoron in any other scenario.
 
 ## GCD versus oGCD planning
 
@@ -69,10 +86,10 @@ take the mana cost into account.
 
 ## Combining GCDs and oGCDs
 
-Under most circumstances, oGCDs strictly take priority over GCD heals. In Ultimates and prog scenarios, this is not 
-necessarily the case. There will be scenarios where you *would* use a GCD in order to conserve an oGCD. Consider a 
-mechanic where there is so much damage that you need both a GCD heal and an oGCD - if you spend the oGCDs, you won't 
-have them when you need them. Such scenarios are very rare in optimized Savage encounters, so this may seem 
+Under most circumstances, oGCDs strictly take priority over GCD heals. In Ultimates and prog scenarios, this is not
+necessarily the case. There will be scenarios where you *would* use a GCD in order to conserve an oGCD. Consider a
+mechanic where there is so much damage that you need both a GCD heal and an oGCD - if you spend the oGCDs, you won't
+have them when you need them. Such scenarios are very rare in optimized Savage encounters, so this may seem
 contradictory with general healing advice.
 
 ### Don't "Focus One Tank"
@@ -98,7 +115,7 @@ targets. This would give sufficient time for the shield to be consumed, increasi
 During hard downtime (i.e. boss not targetable), priority goes out the window. Feel free to use Cure I, as it will save
 you mana and doesn't carry any of the usual disadvantages in such a scenario.
 
-## Mana Managemennt
+## Mana Management
 
 ### Piety
 
