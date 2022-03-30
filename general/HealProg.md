@@ -1,18 +1,14 @@
 # Healing When You Actually Need to Heal
 
-In Ultimates and early Savage prog, healing is significantly different than in an optimized run. It's easy to get so 
-used to optimized healing, especially if you're doing repetitive parse runs, that you can forget what it feels like 
-to actually heal. On top of that, especially if you prog relatively fast, you simply won't be in that situation for 
-very long in Savage fights. Furthermore, the weaker DPS checks in Ultimates can give people the wrong idea about how 
-much they should be optimizing. You should absolutely still be optimizing your healing, rather than writing it off 
-as unnecessary.
+In Ultimates and early Savage prog, healing is significantly different than in an optimized run. It's easy to get so
+used to optimized healing, especially if you're doing repetitive parse runs, that you can forget what it feels like to
+actually heal. On top of that, especially if you prog relatively fast, you simply won't be in that situation for very
+long in Savage fights. Furthermore, the weaker DPS checks in Ultimates can give people the wrong idea about how much
+they should be optimizing. You should absolutely still be optimizing your healing, rather than writing it off as
+unnecessary.
 
-This guide will go over some of the basics of optimizing your healing during Ultimates. Most of it will also apply 
-to early Savage prog, since squeezing out that extra DPS can be the difference between an enrage and a kill.
-
-[//]: # (TODO: make this intro better)
-A guide for Ultimate. Some of these also apply to early Savage prog, where you will also see yourself using more GCD
-heals.
+This guide will go over some of the basics of optimizing your healing during Ultimates. Most of it will also apply to
+early Savage prog, since squeezing out that extra DPS can be the difference between an enrage and a kill.
 
 ### Stylistic Note
 
@@ -135,7 +131,9 @@ or Physick), you should re-evaluate your heal plan and piety level.
 
 ### Mana Potions
 
-It is okay to hold pots for MP potions such as Super-Ethers.
+It is okay to hold off on using damage potions (Tinctures) in favor of MP potions such as Super-Ethers. This is
+particularly useful after dying and other exceptional circumstances. If you frequently find yourself needing more MP
+under normal circumstances, you need more piety.
 
 ## Optimize As You Go
 
