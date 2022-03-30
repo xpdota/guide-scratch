@@ -34,18 +34,18 @@ a WHM using a Medica II and a Medica I, while the SGE does nothing, you would ge
 Mecica II and a Eukrasian Prognosis.
 
 However, none of this works unless you coordinate. If you drop a heal, but your co-healer has to do another GCD heal to
-compensate, you may not have actually gained anything. Planning out heals can be as formal or ad-hoc as you like -
-different things will work for different groups. Generally, you should start with a plan that works, and optimize from
-there. You can experiment with cutting out some heals during raid, but be sure to coordinate with your co-healer so that
-you don't both try to cut something out and cause a wipe. After raid hours, be sure to take a look at logs and find
+compensate, you may not have actually gained anything. Planning out heals can be as formal or informal as needed -
+different things will work best for different groups. Generally, you should start with a plan that works, and optimize
+from there. You can experiment with cutting out some heals during raid, but be sure to coordinate with your co-healer so
+that you don't both try to cut something out and cause a wipe. After raid hours, be sure to take a look at logs and find
 heals that can be cut out, or shift GCD heals around.
 
 ## You Will Be Using GCDs To Heal
 
-Once you've been reclearing a raid tier for a while, it's easy to forget about how to optimize GCD heal usage. You won't
-just be GCD healing because you're still progging the fight - even an optimized run of an ultimate is going to involve
-quite a bit of GCD healing. As such, you tend to not really think about "optimizing" GCD heals, since that would be an
-oxymoron in any other scenario.
+Once you've been reclearing a raid tier for a while, it's easy to forget about how to optimize GCD heal usage, since
+optimization typically involves removing all or nearly all of them. However, once you're thrown into an an ultimate, you
+won't just be GCD healing because you're still progging the fight - even an optimized run of an ultimate is going to
+involve quite a bit of GCD healing.
 
 ## GCD versus oGCD planning
 
@@ -108,8 +108,8 @@ targets. This would give sufficient time for the shield to be consumed, increasi
 
 ### Downtime
 
-During hard downtime (i.e. boss not targetable), priority goes out the window. Feel free to use Cure I, as it will save
-you mana and doesn't carry any of the usual disadvantages in such a scenario.
+During hard downtime (i.e. boss not targetable), priority goes out the window. Feel free to use Cure I and similar
+spells, as it will save you mana and doesn't carry any of the usual disadvantages in such a scenario.
 
 ## Mana Management
 
@@ -124,10 +124,11 @@ Medica II or Adloquium). It is better to get more piety than to lean on "Mana Sa
 Don't sleep on Lucid Dreaming. You'll typically be using it immediately when it comes off cooldown. In its current
 version, it offers 3850 MP per use. You cannot ignore it, or you will run out of mana.
 
-### Low-MP Heals
+### MP-Efficient Heals
 
 If you find yourself needing to use GCD heals which are MP-efficient but not GCD-efficient (such as Cure I, Prognosis,
-or Physick), you should re-evaluate your heal plan and piety level.
+or Physick), you should re-evaluate your heal plan and piety level. It's not the end of the world if you need to use it
+in an emergency (though ideally you'd still want a bit of a buffer), but you should not plan to use these.
 
 ### Mana Potions
 
@@ -141,3 +142,8 @@ When you see a new mechanic, start out by healing it in a very safe manner. Star
 comfortable with resolving the mechanic. It will take you a while to prog an ultimate, so there's plenty of time to
 optimize earlier mechanics that you've progged past already. However, don't get too comfy - you may have to replan a bit
 if it turns out that the *next* mechanic is going to require more cooldowns than you had planned for.
+
+## Credits
+
+Guide written by Wynn, with help from Morgan and other balance mentors and helpfuls. Photos courtesy of Thea Sealticge
+(Siren) and Morgan.
