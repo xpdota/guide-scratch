@@ -42,10 +42,10 @@ heals that can be cut out, or shift GCD heals around.
 
 ## You Will Be Using GCDs To Heal
 
-Once you've been reclearing a raid tier for a while, it's easy to forget about how GCD to optimize GCD heal usage. You
-won't just be GCD healing because you're still progging the fight - even an optimized run of an ultimate is going to
-involve quite a bit of GCD healing. As such, you tend to not really think about "optimizing" GCD heals, since that would
-be an oxymoron in any other scenario.
+Once you've been reclearing a raid tier for a while, it's easy to forget about how to optimize GCD heal usage. You won't
+just be GCD healing because you're still progging the fight - even an optimized run of an ultimate is going to involve
+quite a bit of GCD healing. As such, you tend to not really think about "optimizing" GCD heals, since that would be an
+oxymoron in any other scenario.
 
 ## GCD versus oGCD planning
 
