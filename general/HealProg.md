@@ -47,6 +47,12 @@ optimization typically involves removing all or nearly all of them. However, onc
 won't just be GCD healing because you're still progging the fight - even an optimized run of an ultimate is going to
 involve quite a bit of GCD healing.
 
+### GCD Shields
+
+Another use of GCD heals is as another layer of mitigation for preventing oneshots. This becomes important, as there are
+a significant number of raidwides in ultimates, and even pre-BiS savage, that will oneshot if not mitigated. It can also
+be important for LB generation in the level 70 ultimates.
+
 ## GCD versus oGCD planning
 
 In optimized savage gameplay, you would reach for oGCDs before GCDs.
@@ -66,7 +72,7 @@ Let's take White Mage for example:
 
 For single-target healing, our GCD priority would look something like this:
 
-1. Regen (2000p*)
+1. Regen (1500p*)
 2. Medica II (1000p*, but costs more mana)
 3. Cure II/Afflatus Solace (800p)
 4. Cure I (500p, only applicable if on low mana)
@@ -93,18 +99,21 @@ contradictory with general healing advice.
 Two of the three ultimates have phases where both tanks will need to be actively healed. Often times, newer healers will
 fall into the trap of each healer focusing on one tank. This is highly inefficient and does not make it easier to heal.
 
-This applies to all of the healers. With our White Mage example, we absolutely want to have Regen on both tanks - it's
-2000p. We'd also want to have Medica II on both tanks, for another 2000p. A Cure II would only give us 800p - less than
-half the value! We want to stick to the more efficient heals, and have our co-healer do the same.
+This applies to all of the healers. With our White Mage example, our best two-target heal is Medica II, for 2000p. Next
+up would be a regen on both tanks, for another 1500p each. This brings us to a total of 5000p over time, while spending
+only three GCDs. Finally, if even more healing is needed, and the tanks are stacked, a single Cure III will deliver
+another 1200p.
+
+However, if you were to instead primarily focus one tank, you'd need to dip into less efficient heals. Cure II would
+only deliver 800p per cast - far less efficient. Your co-healer would also suffer from a loss of efficiency, making it
+even more difficult to keep the tanks alive.
 
 Take Scholar as another example. For two target scenarios, both Succor (2x520p) and Adloquium (1380p for a crit, 840p
-otherwise) are great options. The problem is, our healing output would be bottlenecked by the fact that we have to wait
-for the shield to be absorbed before we can apply a new one. This likely won't happen within the span of one GCD.
-Therefore, if we are focusing on a single target, we'd need to use Physick between Adloqium casts. Physick's pitiful
-450p potency makes it a very inefficient use of a GCD.
-
-However, if we were to not try to focus on either tank in particular, we could just use Adloqium on them, alternating
-targets. This would give sufficient time for the shield to be consumed, increasing our healing output dramatically.
+otherwise) are great options. If you needed ridiculous amounts of tank healing, you could use Adloquium, alternating 
+targets on each cast. Since you're not healing the same tank every GCD, this gives the shield more time to be 
+absorbed. However, if you were to focus all of your GCD heals on one tank, there likely would not be enough time for 
+the shield to be fully consumed, meaning you'd have to use Physick between casts of Adloquium. This kills your healing 
+efficiency, because Physick has a pitiful 450 potency.
 
 ### Downtime
 
