@@ -31,9 +31,13 @@ heals, since AST loses less damage output if they need to GCD heal.
 
 However, this needs to be balanced against making your co-healer dip into less efficient heals. For example, instead of
 a WHM using a Medica II and a Medica I, while the SGE does nothing, you would get slightly higher heal potency out of a
-Mecica II and a Eukrasian Prognosis.
+Medica II and a Eukrasian Prognosis.
 
-However, none of this works unless you coordinate. If you drop a heal, but your co-healer has to do another GCD heal to
+In addition, you have to consider MP drain. Making one healer do all the GCD healing may lead to them using unrealistic
+amounts of mana. While additional piety can cover some amount of increased GCD healing, it is generally not recommended
+to place the entire burden on one healer.
+
+None of this works unless you coordinate. If you drop a heal, but your co-healer has to do another GCD heal to
 compensate, you may not have actually gained anything. Planning out heals can be as formal or informal as needed -
 different things will work best for different groups. Generally, you should start with a plan that works, and optimize
 from there. You can experiment with cutting out some heals during raid, but be sure to coordinate with your co-healer so
@@ -109,11 +113,11 @@ only deliver 800p per cast - far less efficient. Your co-healer would also suffe
 even more difficult to keep the tanks alive.
 
 Take Scholar as another example. For two target scenarios, both Succor (2x520p) and Adloquium (1380p for a crit, 840p
-otherwise) are great options. If you needed ridiculous amounts of tank healing, you could use Adloquium, alternating 
-targets on each cast. Since you're not healing the same tank every GCD, this gives the shield more time to be 
-absorbed. However, if you were to focus all of your GCD heals on one tank, there likely would not be enough time for 
-the shield to be fully consumed, meaning you'd have to use Physick between casts of Adloquium. This kills your healing 
-efficiency, because Physick has a pitiful 450 potency.
+otherwise) are great options. If you needed ridiculous amounts of tank healing, you could use Adloquium, alternating
+targets on each cast. Since you're not healing the same tank every GCD, this gives the shield more time to be absorbed.
+However, if you were to focus all of your GCD heals on one tank, there likely would not be enough time for the shield to
+be fully consumed, meaning you'd have to use Physick between casts of Adloquium. This kills your healing efficiency,
+because Physick has a pitiful 450 potency.
 
 ### Downtime
 
