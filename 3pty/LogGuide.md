@@ -1084,6 +1084,8 @@ values for different combinations of Mudra. The only way to be sure that you are
 cross-referencing with game data (such as via Xivapi) to see what the game says the max stack amount for that ability
 is (0 is the max for most abilities).
 
+The "Unknown_808" status effect (0x808) uses the 'stacks' field to apply/remove a VFX, where the count is the VFX ID.
+
 #### Refreshes, Overwrites, and Deaths
 
 If a buff is refreshed early, you will get another 26-line. You will not get a 30-line indicating that the existing buff
