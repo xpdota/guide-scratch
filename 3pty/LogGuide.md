@@ -251,6 +251,16 @@ and finally click the **YOU** button.
 
 This will create encounters whose [logs you can view](#viewing-logs-after-a-fight).
 
+### Triggevent
+
+[Triggevent](https://github.com/xpdota/event-trigger) is a tool that provides triggers, overlays, and other features.
+However, it also offers quite a bit in the way of log analysis with both pre-made filters and freeform queries.
+
+![Example Query](images/triggevent_example_query.png)
+
+Example query for everything that was targeted on oneself (abilities, statuses, headmarkers, etc), excluding things that
+came from players. Right click -> Copy Net Line will retrieve the original ACT line leading up to that event.
+
 ### Importing into ffxivmon
 
 If you want to dig into the network data itself, ffxivmon is a great tool.
@@ -815,14 +825,15 @@ Non-damage flags:
 
 The next byte to the left indicates the 'severity' for damage effects:
 
-- 0x100 = crit damage
-- 0x200 = direct hit damage
-- 0x300 = crit direct hit damage
+- 0x20 = crit damage
+- 0x40 = direct hit damage
+- 0x60 = crit direct hit damage
 
-The byte to the left of that one indicates the 'severity' for heal effects:
+The byte to the left of that one indicates the 'severity' for heal effects, and works the same way as damage severity
+(though heals can never direct hit). Thus, the combinations would be:
 
-- 0x00004 = heal
-- 0x10004 = crit heal
+- 0x000004 = heal
+- 0x200004 = crit heal
 
 Other bitmasks appear on particular abilities, and can indicate whether bane missed or hit recipients. However, these
 all appear ability-specific.
@@ -1139,8 +1150,6 @@ ACT Log Line Examples:
 [13:48:45.337] TargetIcon 1B:40000950:Copied Knave:0000:0000:0117:0000:0000:0000
 ```
 
-<!-- AUTO-GENERATED-CONTENT:END -->
-
 The different headmarker IDs (e.g. `0018` or `001A` in the examples above)
 are consistent across fights as far as which marker they *visually* represent.
 (Correct *resolution* for the marker mechanic may not be.)
@@ -1157,7 +1166,7 @@ updating it to use newer types.
 
 Note that newer content uses 'sequential headmarkers' - every headmark is offset by a per-instance value. You will need
 to wait until you see the first headmarker in the instance, and then use this as an offset by which to adjust all the
-other IDs you see.
+other IDs you see. See below for more information.
 
 #### Head Marker IDs
 
@@ -1216,7 +1225,26 @@ other IDs you see.
 | 00BD        | Purple Spread Circle (giant)      | TItania N/EX                                  | Yes                 |
 | 00BF        | Granite Gaol                      | e4s                                           | N/A                 |
 
-<a name="line28"></a>
+#### Dealing with Sequential Headmarkers
+
+There are several strategies for de-obfuscating sequential headmarkers:
+
+* Cactbot style: Figure out the real ID for the first headmark you'd see in the instance, and use this to calculate
+  the real ID for all other markers in the instance.
+    * Advantage: You get to use real headmark IDs for everything, resulting in a clean final product.
+    * Disadvantage: You have to know the real ID for at least one of the headmarkers seen.
+* Triggevent style: Capture the ID of the first headmark you see in the instance, and subtract this from all other
+  headmark IDs. Triggers use the relative IDs rather than absolute.
+    * Advantage: Provides most of the advantage of the cactbot style, but does not require you to know any real
+      headmark IDs.
+    * Disadvantage: Cannot yoink real headmark IDs off other triggers - everything needs to be calculated for that
+      specific duty.
+* Mechanic-based: Usually, a specific mechanic will throw out its headmarkers in a fixed order. For example, limit
+  cut is always 1-8 in that order. Playstation markers are always circle, triangle, square, cross.
+    * Advantage: Works fine if the mechanic allows for it.
+    * Disadvantage: Requires the mechanic to put out a fixed set of markers in a consistent order. Also the flakiest
+      in the event that SE decides to make subtle changes.
+    * Example: Triggernometry limit cut trigger
 
 ### Line 28 (0x1C): NetworkRaidMarker (Floor Marker)
 
@@ -1682,7 +1710,8 @@ or [NetworkAOEAbility](#line-22-0x16-networkaoeability) line is emitted before, 
 
 > if I cast a spell, i will get an effectresult packet (line type 21/22) showing the damage amount,
 > but the target isnt expected to actually take that damage yet.
-> the line 37 has a unique identifier in it which refers back to the 21/22 line and indicates that the damage should now take effect on the target.
+> the line 37 has a unique identifier in it which refers back to the 21/22 line and indicates that the damage should now
+> take effect on the target.
 > The FFXIV plugin doesn't use these lines currently, they are used by FFLogs.
 > It would help though if I did, but ACT doesn't do multi-line parsing very easily,
 > so I would need to do a lot of work-arounds."
