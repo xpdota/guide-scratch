@@ -1243,7 +1243,8 @@ There are several strategies for de-obfuscating sequential headmarkers:
   cut is always 1-8 in that order. Playstation markers are always circle, triangle, square, cross.
     * Advantage: Works fine if the mechanic allows for it.
     * Disadvantage: Requires the mechanic to put out a fixed set of markers in a consistent order. Also the flakiest
-      in the event that SE decides to make subtle changes.
+      in the event that SE decides to make subtle changes because it relies on an implementation detail (the order 
+      in which the markers are applied).
     * Example: Triggernometry limit cut trigger
 
 ### Line 28 (0x1C): NetworkRaidMarker (Floor Marker)
