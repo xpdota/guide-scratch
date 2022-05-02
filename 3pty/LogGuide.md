@@ -819,8 +819,8 @@ Non-damage flags:
 - 0x02 = fully resisted
 - 0x08 = 'X has no effect' message
 - 0x0b = mp gain ('damage' indicates amount)
-- 0x0e = status applied to target ('damage >> 16' indicates status effect ID, leftmost byte is stack count)
-- 0x0f = status applied to caster ('damage >> 16' indicates status effect ID, leftmost byte is stack count)
+- 0x0e = status applied to target (see "status effects" below)
+- 0x0f = status applied to caster (see "status effects" below)
 - 0x14 = 'no effect' message related to a particular status effect ('damage >> 16' indicates status effect ID)
 
 The next byte to the left indicates the 'severity' for damage effects:
@@ -874,6 +874,17 @@ Unless, if there is an 0x00004000 mask, then this implies "a lot" of damage. In 
 where C is 0x40. The total damage is calculated as D A (B-D) as three bytes together interpreted as an integer.
 
 For example, `424E400F` becomes `0F 42 (4E - OF = 3F)` => `0F 42 3F` => 999999
+
+#### Status Effects
+
+The leftmost two bytes of the "damage" portion are the status effect ID.
+
+The rest depends on the exact status effect.
+
+For DoTs and the like, the middle two bytes of the "flags" indicate the damage lowbyte and crit lowbyte (one fixed decimal point, i.e. 200 = 20% crit, but overflows at 25.6%).
+
+For mitigations, the second byte from the right in the flags is a damage taken modifier (e.g. a 10% mit will come as -10, i.e. 246 or 0xF6).
+
 
 #### Ability Examples
 
@@ -1718,8 +1729,8 @@ or [NetworkAOEAbility](#line-22-0x16-networkaoeability) line is emitted before, 
 > so I would need to do a lot of work-arounds."
 
 Structure:
-`25:[Player ObjectId]:[Sequence Number]:[Current HP]:[Max HP]:[Current MP]:[Max MP]:[Unused]:[Unused]:[Position X]:[Position Y]:[Position Z]:[Facing]:[packet data thereafter]`
-`37|[timestamp]|[targetId]|[targetName]|[Sequence Number]|[target hp]|[target max hp]|[target mp]|[target max mp]|[unused]|[unused]|[x]|[y]|[z]|[heading]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|16985ce13b1e6fa6`
+`25:[Player ObjectId]:[Sequence Number]:[Current HP]:[Max HP]:[Current MP]:[Max MP]:[Shield %]:[Unused]:[Position X]:[Position Y]:[Position Z]:[Facing]:[packet data thereafter]`
+`37|[timestamp]|[targetId]|[targetName]|[Sequence Number]|[target hp]|[target max hp]|[target mp]|[target max mp]|[shield %]|[unused]|[x]|[y]|[z]|[heading]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|16985ce13b1e6fa6`
 Examples:
 
 ```log
