@@ -857,8 +857,8 @@ Non-damage flags:
 - 0x02 = fully resisted
 - 0x08 = 'X has no effect' message
 - 0x0b = mp gain ('damage' indicates amount)
-- 0x0e = status applied to target ('damage >> 16' indicates status effect ID, leftmost byte is stack count)
-- 0x0f = status applied to caster ('damage >> 16' indicates status effect ID, leftmost byte is stack count)
+- 0x0e = status applied to target (see "status effects" below)
+- 0x0f = status applied to caster (see "status effects" below)
 - 0x14 = 'no effect' message related to a particular status effect ('damage >> 16' indicates status effect ID)
 
 The next byte to the left indicates the 'severity' for damage effects:
@@ -913,15 +913,19 @@ where C is 0x40. The total damage is calculated as D A (B-D) as three bytes toge
 
 For example, `424E400F` becomes `0F 42 (4E - OF = 3F)` => `0F 42 3F` => 999999
 
-### Status Effects
+#### Status Effects
 
-As mentioned, for status effects, `damage >> 16` will give you the effect ID. As for the flags, the rightmost byte 
-is always `e` or `f` depending on whether it is applied to the target or the caster. The leftmost byte of the flags
-is the "stacks" value (which isn't actually stacks for everything). The two bytes in the middle have different meanings
-depending on the buff. For example, for Addle, you see -5 and -10, corresponding to the physical and magical reductions.
-DoTs and HoTs have the crit low byte in there. Shields have the low byte of the actual shield amount.
+The leftmost two bytes of the "damage" portion are the status effect ID.
 
-### Ability Examples
+The rest depends on the exact status effect.
+
+For DoTs and the like, the middle two bytes of the "flags" indicate the damage lowbyte and crit lowbyte (one fixed decimal point, i.e. 200 = 20% crit, but overflows at 25.6%).
+
+For mitigations, the second byte from the right in the flags is a damage taken modifier (e.g. a 10% mit will come as -10, i.e. 246 or 0xF6).
+Addle/Feint will show both, and that goes for other statuses with multiple effects.
+
+
+#### Ability Examples
 
 1) 18216 damage from Grand Cross Alpha (basic damage)
    `16:40001333:Neo Exdeath:242B:Grand Cross Alpha:1048638C:Tater Tot:750003:47280000:1C:80242B:0:0:0:0:0:0:0:0:0:0:0:0:36906:41241:5160:5160:880:1000:0.009226365:-7.81128:-1.192093E-07:16043015:17702272:12000:12000:1000:1000:-0.01531982:-19.02808:0:`
