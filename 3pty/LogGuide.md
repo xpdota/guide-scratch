@@ -1246,6 +1246,7 @@ other IDs you see. See below for more information.
 | 0039        | Purple Spread Circle (large)      | Ravana N/EX, Shinryu EX                       | Yes                 |
 | 003E        | Stack Marker (bordered)           | o8n/s, Dun Scaith                             | Yes                 |
 | 0046        | Green Pinwheel                    | Dun Scaith boss 1, o5n/s                      | Yes                 |
+| 0048        | Stack Marker                      | Sephirot                                      | Yes                 |
 | 004B        | Acceleration Bomb                 | Weeping City boss 3, Susano N/EX, o4s         | Yes                 |
 | 004C        | Purple Fire Circle (large)        | e2n/s                                         | Yes                 |
 | 0054        | Thunder Tether (orange)           | Titania EX                                    | N/A                 |
@@ -1517,7 +1518,7 @@ Unused.
 
 ## Line 33 (0x21): Network6D (Actor Control)
 
-See also: [nari director update documentation](https://xivlogs.github.io/nari/types/event/directorupdate.html)
+See also: [nari director update documentation](https://xivlogs.github.io/nari/types/director.html)
 
 To control aspects of the user interface, the game sends packets called Actor Controls. These are broken into 3 types:
 ActorControl, ActorControlSelf, and ActorControlTarget. If ActorControl is global, then ActorControlSelf /
@@ -1974,7 +1975,12 @@ ACT Log Line Examples:
 
 ## Line 41 (0x29): SystemLogMessage
 
-This log line is sent when there are system log messages:
+This log line is sent when there are system log messages.
+As game chat log lines are read from memory in the FFXIV ACT plugin,
+[Line 41](#line41) can be sent both before or after the corresponding [Line 00](#line00).
+That said, they are usually sequential in the network log,
+and so there is no timing advantage to using one over the other,
+but the system log message will have a correct timestamp.
 
 ```log
 [10:38:40.066] SystemLogMessage 29:00:901:619A9200:00:3C
@@ -2029,6 +2035,37 @@ ACT Log Line Examples:
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 <a name="line251"></a>
+
+## Line 42 (0x2A): StatusList3
+
+This line seems to be sent only for the current player and lists some status effects.
+More information is needed.
+
+It is likely that it shares the same general format (triplets) as [line 38](#line-38-0x26-networkstatuseffects)
+
+### Structure
+
+```log
+Network Log Line Structure:
+42|[timestamp]|[id]|[name]
+
+ACT Log Line Structure:
+[timestamp] StatusList3 2A:[id]:[name]
+```
+
+### Examples
+
+```log
+Network Log Line Examples:
+42|2022-06-06T21:57:14.8920000+08:00|10FF0001|Tini Poutini|0A0168|41F00000|E0000000|14016A|41F00000|E0000000|29310030|44835452|10FF0001|4361fffcb50708dd
+42|2022-06-06T10:04:52.3370000-07:00|10FF0002|Potato Chippy|037F|0|E0000000|ee5bd3e5dbb46f59
+42|2022-06-06T10:09:06.2140000-07:00|10FF0002|Potato Chippy|0|0|0|f988f962f9c768e3
+
+ACT Log Line Examples:
+[21:57:14.892] StatusList3 2A:10FF0001:Tini Poutini:0A0168:41F00000:E0000000:14016A:41F00000:E0000000:29310030:44835452:10FF0001
+[10:04:52.337] StatusList3 2A:10FF0002:Potato Chippy:037F:0:E0000000
+[10:09:06.214] StatusList3 2A:10FF0002:Potato Chippy:0:0:0
+```
 
 ## Line 251 (0xFB): Debug
 
