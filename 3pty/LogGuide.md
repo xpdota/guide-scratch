@@ -226,7 +226,7 @@ In any case, whether you're using Cactbot, Triggevent, or something that *is* ba
 frequently run into situations where the regex alone isn't enough. For example, a regex *can* filter player vs NPC IDs (
 as players start with `0x1` while NPCs start with `0x4`) but do not have an easy way to filter to the local player.
 
-Both of the aforementioned options also provide significantly better readability than raw regular expressions. 
+Both of the aforementioned options also provide significantly better readability than raw regular expressions.
 Complicated regices are often jokingly referred to as "write-only" due to providing horrible readability.
 
 ### Other General Tips
@@ -833,9 +833,27 @@ Each ability may have one or more effects. These are indicated by the flagsX and
 and `targetCurHp`. There are eight pairs, each with a 'flags' field and a 'damage' field. The damage field is not
 necessarily always damage. For example, for a buff application, it indicates which buff ID is about to be applied.
 
-This means that damage is not necessarily the first flag. If you are simply trying to determine how much damage a
-particular ability did, there is no specific field you can look at - you must parse all of them and find the one that
-indicates damage.
+Damage seems to always be the first field if it is present. However, for anything else,
+it is bad practice to rely on an effect being in a specific position.
+Rather, these should only be treated as an array of pairs, and you should iterate through them to find what you're
+looking for. As an example of why you should not hardcode indices, consider the following.
+
+Here we have a use of Aeolian edge:
+
+`21|2022-09-13T17:25:12.4790000-07:00|10827569|Name Removed|8CF|Aeolian Edge|4000A062|Hegemone|44714003|37120000|A3D|9F8000|53D|9F8000|11B|8CF8000|0|0|0|0|0|0|0|0|rest of line omitted`
+
+Damage (0x03) is in the first position, 0x3d in the second and third, and 0x1b in the fourth.
+
+Now, a use of Aeolian edge under Bloodbath:
+
+`21|2022-09-13T17:25:18.8060000-07:00|10827569|Name Removed|8CF|Aeolian Edge|4000A062|Hegemone|44714003|38FD0000|104|AA68000|A3D|9F8000|53D|9F8000|11B|8CF8000|0|0|0|0|0|0|rest of line omitted`
+
+Notice that the bloodbath self-heal (0x04) is in the second position, thus shifting the two 0x3d effects and the 
+0x1b effect over to the third, fourth, and fifth positions. This is one of the many reasons why hardcoding indices 
+is a bad idea.
+
+On top of that, ordering can of course change at SE's whim. As such, relying on specific ordering of ability effects
+is simply a bad idea.
 
 ### Effect Types
 
@@ -879,25 +897,21 @@ all appear ability-specific.
 Some of these flags also indicate whether the ability is part of a combo or not and whether the positional was hit.
 However, these values do not seem to be consistent between jobs.
 
-For example, the flags for successful trick attack are `28710.03`. The `.` here represents 0-3 as the trick may crit,
-dh, both, or neither. The flags for a missed trick attack are `710.03`. Thus, there's a `0x28700000` mask applied here
-when the positional is correct, which was determined via experimentation.
-
 If you care about specific ability flags, you likely have to do this research yourself. Please send pull requests to
-this document so it can be shared!
+this document so that they can be shared!
 
 There are many others that are not considered to be important for anything outside of niche purposes, like 0x28 for
 mounting.
 
 You can also check
-in [Triggevent's FieldMapper](https://github.com/xpdota/event-trigger/blob/master/xivsupport/src/main/java/gg/xp/xivsupport/events/actlines/parsers/FieldMapper.java#L244)
+in [Triggevent's AbilityEffects](https://github.com/xpdota/event-trigger/blob/master/xivsupport/src/main/java/gg/xp/xivsupport/events/actlines/parsers/AbilityEffects.java)
 to see a concrete example of these being calculated.
 
 ### Ability Damage
 
 Damage bitmasks:
 
-- 0x1000 = hallowed, no damage
+- 0x0100 = hallowed, no damage
 - 0x4000 = "a lot" of damage
 
 The damage value in an ability usage is not the literal damage, because that would be too easy.
@@ -913,6 +927,20 @@ where C is 0x40. The total damage is calculated as D A (B-D) as three bytes toge
 
 For example, `424E400F` becomes `0F 42 (4E - OF = 3F)` => `0F 42 3F` => 999999
 
+Once you have the damage, the other pieces of interest are the bitmasks above, as well as the severity.
+
+However, there is one more interesting bit here. The leftmost byte is the percentage of the damage, rounded down,
+that came from positional and/or combo bonuses. You can use 
+[this sheet](https://docs.google.com/spreadsheets/d/1Huvsu-Ic8Fx1eKZ7yWlYmD1vg2N0fnILSKLHmmR21PI/edit#gid=0)
+as a reference for creating a positional hit/miss trigger. It is not necessary to guess and check these, rather,
+all the needed information can be found on the lodestone.
+
+Note that the battle log text is slightly misleading here - it is **not** `(bonus / base)` as you might expect, but
+`(bonus / total)`. That is, an ability that deals 200 damage if the positional/combo is missed but 300 if it hits
+would display a bonus of 33% (since one-third of the damage came from the bonus), not 50% as you might expect. It
+is the same value you would see in the in-game battle log (e.g. `Hegemone takes 9129(+61%) damage`). This is why
+you will never see a bonus of above 100%, even if the bonus doubles, triples or even quadruples the damage.
+
 #### Status Effects
 
 The leftmost two bytes of the "damage" portion are the status effect ID.
@@ -923,7 +951,6 @@ For DoTs and the like, the middle two bytes of the "flags" indicate the damage l
 
 For mitigations, the second byte from the right in the flags is a damage taken modifier (e.g. a 10% mit will come as -10, i.e. 246 or 0xF6).
 Addle/Feint will show both, and that goes for other statuses with multiple effects.
-
 
 #### Ability Examples
 
