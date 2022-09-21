@@ -941,6 +941,9 @@ would display a bonus of 33% (since one-third of the damage came from the bonus)
 is the same value you would see in the in-game battle log (e.g. `Hegemone takes 9129(+61%) damage`). This is why
 you will never see a bonus of above 100%, even if the bonus doubles, triples or even quadruples the damage.
 
+For parries/blocks, instead of the bonus, this value indicates the reduction (treat it as an 8-bit signed integer),
+e.g. 0xEC => -20%.
+
 #### Status Effects
 
 The leftmost two bytes of the "damage" portion are the status effect ID.
@@ -949,8 +952,9 @@ The rest depends on the exact status effect.
 
 For DoTs and the like, the middle two bytes of the "flags" indicate the damage lowbyte and crit lowbyte (one fixed decimal point, i.e. 200 = 20% crit, but overflows at 25.6%).
 
-For mitigations, the second byte from the right in the flags is a damage taken modifier (e.g. a 10% mit will come as -10, i.e. 246 or 0xF6).
-Addle/Feint will show both, and that goes for other statuses with multiple effects.
+For damage dealt/taken modifiers, the second byte from the right in the flags is a damage taken modifier (e.g. a 10% mit will come as -10, i.e. 246 or 0xF6).
+Addle/Feint will show both, and that goes for other statuses with multiple effects. Damage downs percentages [can be found](https://triggevent.io/pages/How-To-Find-Damage-Downs-Buffs-Vulns/)
+using this method.
 
 #### Ability Examples
 
@@ -980,9 +984,19 @@ This is an ability usage in game that ends up hitting multiple actors or no acto
 
 See: [NetworkAbility](#line21) for a discussion of the difference between `NetworkAbility` and `NetworkAOEAbility`.
 
-Note that for most purposes, you should **not** differentiate between 21 and 22, but rather use the 'maxTargetIndex' to
+Note that for most purposes, you should **not** differentiate between 21 and 22, but rather use the 'targetCount' to
 see whether the ability hit multiple targets or not. You can tell that the ability hit no targets because the only
 target will be 0xE00000000.
+
+### About targetIndex and targetCount
+
+If you are trying to find all the targets hit by an AoE skill, simply consume lines until you see one with 
+`targetIndex + 1 == targetCount` (targetIndex starts at 0, targetCount starts at 1). 
+
+This is not always the case, but for AoEs targeted on a player, the first target (`targetIndex == 0`) is usually
+the "intended target". For example, in DSR, liquid heaven's first target is the player who is baiting it. You can
+use this knowledge to make triggers for role-based mechanics resilient against players taking hits that they
+weren't supposed to.
 
 <a name="line23"></a>
 
