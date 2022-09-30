@@ -1452,10 +1452,10 @@ corresponds to the loss of effects (either positive or negative).
 
 ```log
 Network Log Line Structure:
-30|[timestamp]|[effectId]|[effect]|[?]|[sourceId]|[source]|[targetId]|[target]|[count]
+30|[timestamp]|[effectId]|[effect]|0.0|[sourceId]|[source]|[targetId]|[target]|[count]|targetMaxHp|sourceMaxHp
 
 ACT Log Line Structure:
-[timestamp] StatusRemove 1E:[effectId]:[effect]:[?]:[sourceId]:[source]:[targetId]:[target]:[count]
+[timestamp] StatusRemove 1E:[effectId]:[effect]:0.0:[sourceId]:[source]:[targetId]:[target]:[count]:[targetMaxHp]:[sourceMaxHp]
 ```
 
 ### Regexes
@@ -1466,6 +1466,26 @@ Network Log Line Regex:
 
 ACT Log Line Regex:
 (?<timestamp>^.{14}) StatusRemove (?<type>1E):(?<effectId>(?:[^:]*)):(?<effect>(?:(?:[^:]|: )*?)):[^:]*:(?<sourceId>(?:[^:]*)):(?<source>(?:[^:]*)):(?<targetId>(?:[^:]*)):(?<target>(?:[^:]*)):(?<count>(?:[^:]*))(?:$|:)
+```
+
+### Notes
+
+The first unknown field is where a 26-line would put its duration. However, in the ACT plugin, it is hardcoded to 0.0:
+
+```cs
+string str = this._logFormat.FormatNetworkBuffMessage(
+    networkBuff.BuffID,
+    this._buffList.GetStatusNameByID((uint) networkBuff.BuffID), 
+    // This one
+    0.0f,
+    networkBuff.ActorID,
+    networkBuff.ActorName,
+    networkBuff.TargetID,
+    networkBuff.TargetName,
+    networkBuff.BuffExtra,
+    combatantById1?.MaxHP,
+    combatantById2?.MaxHP);
+
 ```
 
 ### Examples
