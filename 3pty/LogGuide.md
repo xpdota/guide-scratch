@@ -1836,10 +1836,10 @@ or [NetworkAOEAbility](#line-22-0x16-networkaoeability) line is emitted before, 
 > so I would need to do a lot of work-arounds."
 
 Structure:
-`25:[Player ObjectId]:[Sequence Number]:[Current HP]:[Max HP]:[Current MP]:[Max MP]:[Shield %]:[Unused]:[Position X]:
+`25:[Player ObjectId]:[Sequence Number]:[Current HP]:[Max HP]:[Current MP]:10000:[Shield %]:[Unused]:[Position X]:
 [Position Y]:[Position Z]:[Facing]:[packet data thereafter]`
 
-`37|[timestamp]|[targetId]|[targetName]|[Sequence Number]|[target hp]|[target max hp]|[target mp]|[target max mp]|
+`37|[timestamp]|[targetId]|[targetName]|[Sequence Number]|[target hp]|[target max hp]|[target mp]|10000|
 [Shield %]|[unused]|[x]|[y]|[z]|[heading]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|[unknown]|
 [unknown]|16985ce13b1e6fa6`
 
@@ -1879,6 +1879,11 @@ an integer. For example, if you have 3,000 HP worth of shields on a 20,000 hp en
 
 More accurate shield values can sometimes be derived by looking at the sub-fields in 38-lines or 21/22-line action
 effects. The effects will contain the least significant byte of the real shield value.
+
+### MP Values
+
+The 'current MP' can actually be GP or CP rather than MP, if you are on a DoL or DoH class. However, the 'maximum' is 
+actually hardcoded to 10000 in the FFXIV plugin.
 
 ## Line 38 (0x26): NetworkStatusEffects
 
@@ -1947,6 +1952,11 @@ the [NetworkBuff](#line-26-0x1a-networkbuff),
 log lines without breaking previous content or plugins.
 
 <a name="line39"></a>
+
+### MP Values
+
+The current and max 'MP' can actually be GP or CP rather than MP, if you are on a DoL or DoH class. Unlike 37-lines, the
+max is correct.
 
 ## Line 39 (0x27): NetworkUpdateHP
 
