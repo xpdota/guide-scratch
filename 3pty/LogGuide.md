@@ -2170,3 +2170,229 @@ ACT log lines are blank for this type.
 ## Line 254 (0xFE): Error
 
 These are lines emitted directly by the ffxiv plugin when something goes wrong.
+
+## OverlayPlugin Log Lines
+
+If you are using OverlayPlugin,
+it will emit extra log lines that are not part of the ffxiv plugin.
+The ids of these lines start at 256 and go up.
+Any id between 0-255 is reserved for the ffxiv plugin.
+
+<a name="line256"></a>
+
+### Line 256 (0x100): LineRegistration
+
+This line is emitted into logs when any custom logs are registered with OverlayPlugin.
+This is so that it is obvious which log lines and versions to expect for a given log file.
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=LineRegistration&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+256|[timestamp]|[id]|[source]|[version]
+
+Parsed Log Line Structure:
+[timestamp] 256 100:[id]:[source]:[version]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>256)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<source>[^|]*)\|(?<version>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 256 (?<type>100):(?<id>[^:]*):(?<source>[^:]*):(?<version>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+256|2022-10-02T10:15:31.5635165-07:00|257|OverlayPlugin|MapEffect|1|594b867ee2199369
+256|2022-10-02T10:15:31.5645159-07:00|258|OverlayPlugin|FateDirector|1|102a238b2495bfd0
+256|2022-10-02T10:15:31.5655143-07:00|259|OverlayPlugin|CEDirector|1|35546b48906c41b2
+
+Parsed Log Line Examples:
+[10:15:31.563] 256 100:257:OverlayPlugin:MapEffect:1
+[10:15:31.564] 256 100:258:OverlayPlugin:FateDirector:1
+[10:15:31.565] 256 100:259:OverlayPlugin:CEDirector:1
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=LineRegistration&lang=en-US) -->
+
+<a name="line257"></a>
+
+### Line 257 (0x101): MapEffect
+
+This message is sent to cause a specific visual effect to render
+in the game client during instanced content.
+MapEffect lines are not tied to any particular actor or action
+but may provide visual-based information about how an upcoming mechanic will resolve.
+
+For example,
+after Aetheric Polyominoid or Polyominoid Sigma casts in P6S,
+MapEffect messages are sent to cause the game client to render '+' and 'x' effects on specific map tiles,
+indicating to the player which tiles will later be rendered unsafe by Polyominous Dark IV.
+
+This can also include things like:
+
+- meteor graphics / bridges breaking in Amaurot
+- the eye location in DSR
+- P8S2 tower colors
+- P8S torch effects (unnecessary as these also have a normal cast associated with them)
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=MapEffect&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+257|[timestamp]|[instance]|[flags]|[location]|[data0]|[data1]
+
+Parsed Log Line Structure:
+[timestamp] 257 101:[instance]:[flags]:[location]:[data0]:[data1]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>257)\|(?<timestamp>[^|]*)\|(?<instance>[^|]*)\|(?<flags>[^|]*)\|(?<location>[^|]*)\|(?<data0>[^|]*)\|(?<data1>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 257 (?<type>101):(?<instance>[^:]*):(?<flags>[^:]*):(?<location>[^:]*):(?<data0>[^:]*):(?<data1>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+257|2022-09-27T18:03:45.2834013-07:00|800375A9|00020001|09|F3|0000|de00c57494e85e79
+257|2022-09-27T18:06:07.7744035-07:00|800375A9|00400020|01|00|0000|72933fe583158786
+257|2022-09-29T20:07:48.7330170-07:00|800375A5|00020001|05|00|0000|28c0449a8d0efa7d
+
+Parsed Log Line Examples:
+[18:03:45.283] 257 101:800375A9:00020001:09:F3:0000
+[18:06:07.774] 257 101:800375A9:00400020:01:00:0000
+[20:07:48.733] 257 101:800375A5:00020001:05:00:0000
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=MapEffect&lang=en-US) -->
+
+The `instance` parameter is identical to `instance` in an [actor control line](#line-33-0x21-network6d-actor-control).
+See above for more information.
+
+The `flags` parameter identifies the visual effect that will be rendered in the game.
+For example,
+in P6S, `00020001` flags equates to a `+`-shaped tile and
+`00400020` flags equates to an `x`-shaped tile.
+Flags do not appear to be unique across multiple instances:
+as the above examples illustrate
+the flags `00020001` are used in both P5S and P6S to render completely different visual effects.
+
+That said,
+it does appear from initial analysis that when a map effect is rendered,
+a second MapEffect line with `00080004` flags is sent at the conclusion of the effect,
+which may correspond to removal of the effect.
+This appears to be consistent behavior across several fights so far,
+but more information is needed.
+
+The `location` parameter indicates the location in the current instance where the effect will be rendered.
+Locations are not consistent across instances and appear to be unique to each instance.
+E.g., a location of '05' in P6S corresponds to one of the 16 tiles on the map floor,
+whereas the '05' location in P5S appears to correspond to different map coordinates.
+
+<a name="line258"></a>
+
+### Line 258 (0x102): FateDirector
+
+This line indicates changes in fates on the map.
+This includes when fates are added,
+removed,
+or their progress has changed.
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=FateDirector&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+258|[timestamp]|[category]|[?]|[param1]|[param2]|[param3]|[param4]|[param5]|[param6]
+
+Parsed Log Line Structure:
+[timestamp] 258 102:[category]:[?]:[param1]:[param2]:[param3]:[param4]:[param5]:[param6]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>258)\|(?<timestamp>[^|]*)\|(?<category>[^|]*)\|(?:[^|]*\|)(?<param1>[^|]*)\|(?<param2>[^|]*)\|(?<param3>[^|]*)\|(?<param4>[^|]*)\|(?<param5>[^|]*)\|(?<param6>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 258 (?<type>102):(?<category>[^:]*):[^:]*:(?<param1>[^:]*):(?<param2>[^:]*):(?<param3>[^:]*):(?<param4>[^:]*):(?<param5>[^:]*):(?<param6>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+258|2022-09-19T17:25:59.5582137-07:00|Add|E601|000000DE|00000000|00000000|00000000|00000000|00000000|00000000|c7fd9f9aa7f56d4d
+258|2022-08-13T19:46:54.6179420-04:00|Update|203A|00000287|00000000|00000000|00000000|00000000|00000000|6E756F63|bd60bac0189b571e
+258|2022-09-24T12:51:47.5867309-07:00|Remove|0000|000000E2|00000000|00000000|00000000|00000000|00000000|00007FF9|043b821dbfe608c5
+
+Parsed Log Line Examples:
+[17:25:59.558] 258 102:Add:E601:000000DE:00000000:00000000:00000000:00000000:00000000:00000000
+[19:46:54.617] 258 102:Update:203A:00000287:00000000:00000000:00000000:00000000:00000000:6E756F63
+[12:51:47.586] 258 102:Remove:0000:000000E2:00000000:00000000:00000000:00000000:00000000:00007FF9
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=FateDirector&lang=en-US) -->
+
+<a name="line259"></a>
+
+### Line 259 (0x103): CEDirector
+
+This line is like [FateDirector](#line258),
+but is for Critical Engagements in Bozja.
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=CEDirector&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+259|[timestamp]|[popTime]|[timeRemaining]|[?]|[numPlayers]|[status]|[?]|[progress]
+
+Parsed Log Line Structure:
+[timestamp] 259 103:[popTime]:[timeRemaining]:[?]:[numPlayers]:[status]:[?]:[progress]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>259)\|(?<timestamp>[^|]*)\|(?<popTime>[^|]*)\|(?<timeRemaining>[^|]*)\|(?:[^|]*\|)(?<numPlayers>[^|]*)\|(?<status>[^|]*)\|(?:[^|]*\|)(?<progress>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 259 (?<type>103):(?<popTime>[^:]*):(?<timeRemaining>[^:]*):[^:]*:(?<numPlayers>[^:]*):(?<status>[^:]*):[^:]*:(?<progress>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+259|2022-09-19T18:09:35.7012951-07:00|632912D5|0000|0000|07|01|02|00|00|7F|00|00|4965d513cc7a6dd3
+259|2022-09-19T18:09:39.9541413-07:00|63291786|04B0|0000|07|01|03|00|00|00|00|00|6c18aa16678911ca
+259|2022-09-19T18:09:46.7556709-07:00|63291786|04AA|0000|07|01|03|00|02|7F|00|00|5bf224d56535513a
+
+Parsed Log Line Examples:
+[18:09:35.701] 259 103:632912D5:0000:0000:07:01:02:00:00:7F:00:00
+[18:09:39.954] 259 103:63291786:04B0:0000:07:01:03:00:00:00:00:00
+[18:09:46.755] 259 103:63291786:04AA:0000:07:01:03:00:02:7F:00:00
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=CEDirector&lang=en-US) -->
