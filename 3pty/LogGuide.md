@@ -23,8 +23,8 @@ addon that uses log lines, for ff14.
 
 This guide was last updated for:
 
-- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.08
-- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.6.4.4
+- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.3
+- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.6.7.7
 
 ## Table of Contents
 
@@ -1056,15 +1056,42 @@ are.
 
 ```log
 Network Log Line Structure:
-24|[timestamp]|[id]|[name]|[which]|[effectId]|[damage]|[currentHp]|[maxHp]|[currentMp]|[maxMp]|[?]|[?]|[x]|[y]|[z]|[heading]
+
+Post-6.3:
+24|[timestamp]|[targetId]|[targetName]|[hotOrDot]|[effectId]|[damage/heal]|[targetCurHp]|[targetMaxHp]|[targetCurMp]|[targetMaxMp]|[?]|[?]|[targetX]|[targetY]|[targetZ]|[targetHeading]|[sourceId]|[sourceName]|[damageType]|[sourceCurHp]|[sourceMaxHp]|[sourceCurMp]|[sourceMaxMp]|[?]|[?]|[sourceX]|[sourceY]|[sourceZ]|[sourceHeading]
+
+Pre-6.3:
+24|[timestamp]|[targetId]|[targetName]|[hotOrDot]|[effectId]|[damage/heal]|[targetCurHp]|[targetMaxHp]|[targetCurMp]|[targetMaxMp]|[?]|[?]|[targetX]|[targetY]|[targetZ]|[targetHeading]|[sourceId]|[sourceName]
 
 ACT Log Line Structure:
-[timestamp] DoTHoT 18:[id]:[name]:[which]:[effectId]:[damage]:[currentHp]:[maxHp]:[currentMp]:[maxMp]:[?]:[?]:[x]:[y]:[z]:[heading]
+Post-6.3:
+[timestamp] DoTHoT 18:[targetId]:[targetName]:[hotOrDot]:[effectId]:[damage/heal]:[targetCurHp]:[targetMaxHp]:[targetCurMp]:[targetMaxMp]:[?]:[?]:[targetX]:[targetY]:[targetZ]:[targetHeading]:[sourceId]:[sourceName]:[damageType]:[sourceCurHp]:[sourceMaxHp]:[sourceCurMp]:[sourceMaxMp]:[?]:[?]:[sourceX]:[sourceY]:[sourceZ]:[sourceHeading]
+
+Pre-6.3:
+[timestamp] DoTHoT 18:[targetId]:[targetName]:[hotOrDot]:[effectId]:[damage/heal]:[targetCurHp]:[targetMaxHp]:[targetCurMp]:[targetMaxMp]:[?]:[?]:[targetX]:[targetY]:[targetZ]:[targetHeading]
 ```
 
 ### Examples
 
 ```log
+Post-6.3:
+Combined DoT on an enemy:
+24|2023-01-13T18:05:08.3180000-08:00|40009AB5|Rubicante|DoT|0|281F|10583034|30021728|10000|10000|||99.99|99.99|0.00|3.06|E0000000||FFFFFFFF|||||||||||e0bbe74ef6e58aea
+Note how the effect ID is 0, indicating a combined tick.
+
+Combined HoT on a player:
+24|2023-01-13T18:05:01.4990000-08:00|1087ECAD|Target Name|HoT|0|1423|108000|108000|4600|10000|||99.83|87.51|0.00|-2.56|104884AC|Source Name|0|108415|108415|10000|10000|||99.68|110.37|0.00|3.09|062ebf60a997c6a5
+Note: The "source" is really just the last player who applied a DoT/HoT. Unless that is really what you want, you should ignore such data when the effect ID is zero.
+
+Ground DoT:
+24|2023-01-13T18:04:28.5350000-08:00|40009AB5|Rubicante|DoT|2ED|5D5|13010017|30021728|10000|10000|||100.11|91.60|0.00|0.01|108E7ACE|Altair Grier|5|103623|108000|10000|10000|||100.30|101.88|0.00|-3.12|31299ac20b72d7df
+Note the '5' - this is the damage type (magic)
+
+Ground HoT:
+24|2023-01-13T18:38:52.6470000-08:00|1048BEDA|Target Name|HoT|777|B76|91737|108415|6700|10000|||97.39|98.00|0.00|0.85|1085FABE|WHM Player|0|44988|68201|6842|10000|||107.62|100.02|0.00|-1.46|5468305a1ae27a1c
+
+Pre-6.3:
+
 Network Log Line Examples:
 24|2021-07-27T12:47:05.5100000-04:00|10FF0002|Potato Chippy|HoT|0|3A1|21194|21194|8964|10000|0|1000|-1.815857|-5.630676|10.55192|2.929996|63d7d7e99108018a1890f367f89eae43
 24|2021-07-27T12:47:05.5990000-04:00|10FF0001|Tini Poutini|HoT|0|3BC|26396|26396|10000|10000|0|1000|-0.1373901|-8.438293|10.54466|3.122609|21b814e6f165bc1cde4a6dc23046ecb0
@@ -2359,7 +2386,6 @@ Parsed Log Line Examples:
 This line is like [FateDirector](#line258),
 but is for Critical Engagements in Bozja.
 
-<!-- AUTO-GENERATED-CONTENT:START (logLines:type=CEDirector&lang=en-US) -->
 
 #### Structure
 
@@ -2395,4 +2421,53 @@ Parsed Log Line Examples:
 [18:09:46.755] 259 103:63291786:04AA:0000:07:01:03:00:02:7F:00:00
 ```
 
-<!-- AUTO-GENERATED-CONTENT:END (logLines:type=CEDirector&lang=en-US) -->
+<a name="line260"></a>
+
+### Line 260 (0x104): InCombat
+
+This log line tracks in combat state.
+`inGameCombat` is whether FFXIV itself considers you in combat.
+`inACTCombat` is whether ACT considers you in combat,
+which may include other people around you and not yourself
+and also takes your ACT encounter settings into consideration.
+
+OverlayPlugin uses `inACTCombat` to re-split your encounters during import
+based on how they were split when they were originally recorded.
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=InCombat&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+260|[timestamp]|[inACTCombat]|[inGameCombat]
+
+Parsed Log Line Structure:
+[timestamp] 260 104:[inACTCombat]:[inGameCombat]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>260)\|(?<timestamp>[^|]*)\|(?<inACTCombat>[^|]*)\|(?<inGameCombat>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 260 (?<type>104):(?<inACTCombat>[^:]*):(?<inGameCombat>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+260|2023-01-03T10:17:15.8240000-08:00|0|0|7da9e0cfed11abfe
+260|2023-01-03T17:51:42.9680000-08:00|1|0|ae12d0898d923251
+260|2023-01-03T17:54:50.0680000-08:00|1|1|3ba06c97a4cbbf42
+
+Parsed Log Line Examples:
+[10:17:15.824] 260 104:0:0
+[17:51:42.968] 260 104:1:0
+[17:54:50.068] 260 104:1:1
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=InCombat&lang=en-US) -->
