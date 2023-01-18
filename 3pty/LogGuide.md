@@ -923,9 +923,9 @@ First, left-extend zeroes to 4 bytes (8 chars), e.g. 2934001 => 02934001, or 100
 The first two bytes (4 chars) are the damage.
 
 Unless, if there is an 0x00004000 mask, then this implies "a lot" of damage. In this case, consider the bytes as ABCD,
-where C is 0x40. The total damage is calculated as D A (B-D) as three bytes together interpreted as an integer.
+where C is 0x40. The total damage is calculated as D A B as three bytes together interpreted as an integer.
 
-For example, `424E400F` becomes `0F 42 (4E - OF = 3F)` => `0F 42 3F` => 999999
+For example, `423F400F` becomes `0F 42 3F` => 999999
 
 Once you have the damage, the other pieces of interest are the bitmasks above, as well as the severity.
 
